@@ -1,63 +1,100 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>srdusr - Portfolio Website</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Trevor Gray (srdusr) - Freelance Developer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<header>
+    <nav>
     <div class="logo">
-      <a href="index.html"><img src="logo.png" alt="srdusr"></a>
+        <h1><a href="index.html"><img src="logo.png" alt="srdusr"></a></h1>
     </div>
-		<nav>
-			<ul>
-				<li><a href="projects.html">Projects</a></li>
-        <li><a href="blog.html">Blog</a></li>
-				<li><a href="about.html">About</a></li>
-				<li><a href="contact.html">Contact</a></li>
-			</ul>
-		</nav>
-</div>
-</header>
-
-  <div class="parallax">
-      <h1><span style="font-size: 1em;">Hello World!<br>Welcome to my portfolio.</span></h1>
-  </div>
-
-	<div class="content">
-      <h2><span style="font-size: 0.5em;">I'm <span style="font-size: 1.5em;">Trevor Gray</span>,<br>but you can also call me by my internet name <span style="font-size: 1.5em;">srdusr</span>.<br></h2>
-      <p> I'm an aspiring <span style="font-weight: bold; font-size: 1.5em;">Software Developer</span> with a keen interest in devops/sysadmin and infosec. I have a diverse set of skills, ranging from building software all the way to deployment and linux server administration. I enjoy building tools that can be of use to others and I bring a distinct blend of technical skills and creative problem solving to every project I work on. I also occasionally share what I learn on my blog. If you'd like to learn more about me or discuss potential projects or job opportunities, please don't hesitate to get in touch.
-      </p>
-
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+	
+    <header id="header">
+        <h1><span style="font-size: 0.5em;">Trevor Gray</span></h1>
+        <p>I'm an aspiring <span style="font-weight: bold;">Software Developer</span> with a keen interest in devops/sysadmin and infosec. I have a diverse set of skills, ranging from building software all the way to deployment/linux server administration and I bring a distinct blend of technical skills and creative problem solving to every project I work on. I also occasionally share what I learn on my blog.
+        </p>
+        <p>When I'm not coding, you can find me improving my developer workflow or practicing modern-day fencing (the one with swords in it). If you'd like to learn more about me or discuss potential projects or job opportunities, please don't hesitate to get in touch.
+        </p>
+    </header>
+    <section class="about" id="about">
+        <div class="content">
+            <h2>About Me</h2>
+            <p>I'm always eager to learn and improve my skills.  I specialize in [list your programming languages, frameworks, and other skills], and I'm committed to delivering high-quality results to any project I work on. If you're looking for a talented and dedicated software engineer, I'd be happy to discuss how I can help you achieve your goals or solve any problems.</p>
+        </div>
+    </section>
+    <section class="featured-projects" id="featured-projects">
+  <div class="content">
     <h2>Featured Projects</h2>
-    <div class="featured-project">
-      <h3>Project title</h3>
-      <p>Summary of project description...</p>
-      <a href="projects.html">View Project</a>
-    </div>
-
-    <h2>Featured Blog Posts</h2>
-    <div class="featured-blog">
-      <h3>Blog post title</h3>
-      <p>Summary of blog post content...</p>
-      <a href="blog.html">Read More</a>
-    </div>
-
-    <h2>About Me</h2>
-    <ul>
-      <li><a href="about.html">About</a></li>
-    </ul>
-    <p>Get to know more about $whoami and how I can assist you / what I have to offer</p>
-
-		<h2>Contact Me</h2>
-    <ul>
-      <li><a href="contact.html">About</a></li>
-    </ul>
-		<p>You can reach me at [my email address] or connect with me on [social media platform(s)].</p>
-	</div>
-
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="main.js"></script>
+    <p>Here are some of the projects I have worked on:</p>
+    <div class="projects.container">
+            <li>
+            <div class="project">
+                  <h3>typerpunk, a rust based cli/tui typing game</h3>
+                  <a href="https://github.com/srdusr/typerpunk">
+                  <img src="typerpunk.jpg" alt="Project 1">
+                  </a>
+            </li>
+            <li>
+            <div class="project">
+                  <h3>eva (Effiency Virtual Assistant), a python based cli/tui sysinfo analysis</h3>
+                  <a href="https://github.com/srdusr/eva">
+                  <img src="eva.jpg" alt="Project 2">
+                  </a>
+            </li>
+            <li>
+            <div class="project">
+                  <h3>cerberus, a C based cli/tui password manager</h3>
+                  <a href="https://github.com/srdusr/cerberus">
+                  <img src="cerberus.jpg" alt="Project 3">
+                  </a>
+            </li>
+          </div>
+      </div>
+    </section>
+    <section class="blog" id="blog">
+        <div class="content">
+            <h2>My Blog</h2>
+            <p>Here are some of my latest blog posts:</p>
+            <ul>
+                <li><a href="#">Post 1</a></li>
+                <li><a href="#">Post 2</a></li>
+                <li><a href="#">Post 3</a></li>
+            </ul>
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <div class="content">
+            <h2>Contact Me</h2>
+            <p>Feel free to contact me if you have any questions or would like to work together on a project:</p>
+            <ul>
+                <li>Email: example@email.com</li>
+                <li>Phone: +27 -- --- ----</li>
+                <li><a href="#">LinkedIn</a></li>
+            </ul>
+        </div>
+    </section>
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('nav ul');
+  
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+      hamburger.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
