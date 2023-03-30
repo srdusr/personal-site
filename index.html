@@ -25,15 +25,15 @@
 	
     <header id="header">
         <h1><span style="font-size: 0.5em;">Trevor Gray</span></h1>
-        <p>I'm an aspiring <span style="font-weight: bold;">Software Developer</span> with a keen interest in devops/sysadmin and infosec. I have a diverse set of skills, ranging from building software all the way to deployment/linux server administration and I bring a distinct blend of technical skills and creative problem solving to every project I work on. I also occasionally share what I learn on my blog.
+      <p>I'm an aspiring <span style="font-weight: bold;">Software Developer</span> from South Africa.<br>I have an interest in devops/sysadmin and infosec.<br>I occasionally share what I learn on my blog.<br>When I'm not coding, you can find me improving my developer workflow or practicing modern-day fencing (the one with swords in it).
         </p>
-        <p>When I'm not coding, you can find me improving my developer workflow or practicing modern-day fencing (the one with swords in it). If you'd like to learn more about me or discuss potential projects or job opportunities, please don't hesitate to get in touch.
+      <p>If you'd like to learn more about me or discuss potential projects or job opportunities, please don't hesitate to get in touch.
         </p>
     </header>
     <section class="about" id="about">
         <div class="content">
             <h2>About Me</h2>
-            <p>I'm always eager to learn and improve my skills.  I specialize in [list your programming languages, frameworks, and other skills], and I'm committed to delivering high-quality results to any project I work on. If you're looking for a talented and dedicated software engineer, I'd be happy to discuss how I can help you achieve your goals or solve any problems.</p>
+            <p>My internet name is srdusr. I have a diverse set of skills, ranging from building software all the way to deployment/linux server administration and I bring a distinct blend of technical skills and creative problem solving to every project I work on. I'm always eager to learn and improve my skills. I specialize in [list programming languages, frameworks, and other skills], and I'm committed to delivering high-quality results to any project I work on. If you're looking for a talented and dedicated software engineer, I'd be happy to discuss how I can help you achieve your goals or solve any problems.</p>
         </div>
     </section>
 <section class="featured-projects" id="featured-projects">
@@ -41,55 +41,133 @@
     <h2>Featured Projects</h2>
     <p>Here are some of the projects I have worked on:</p>
     <div class="project">
-      <p>typerpunk, a rust based cli/tui typing game</p>
+      <p>Typerpunk, a rust based cli/tui typing game</p>
       <a href="https://github.com/srdusr/typerpunk">
         <img src="typerpunk.jpg" alt="Project 1">
       </a>
     </div>
     <div class="project">
-      <p>eva (Efficiency Virtual Assistant), a python based cli/tui sysinfo analysis</p>
+      <p>Eva (Efficiency Virtual Assistant), a python based cli/tui sysinfo analysis</p>
       <a href="https://github.com/srdusr/eva">
         <img src="eva.jpg" alt="Project 2">
       </a>
     </div>
     <div class="project">
-      <p>cerberus, a C based cli/tui password manager</p>
+      <p>Cerberus, a C based cli/tui password manager</p>
       <a href="https://github.com/srdusr/cerberus">
         <img src="cerberus.jpg" alt="Project 3">
       </a>
     </div>
   </div>
 </section>
-    <section class="blog" id="blog">
-        <div class="content">
-            <h2>My Blog</h2>
-            <p>Here are some of my latest blog posts:</p>
-            <ul>
-                <li><a href="#">Post 1</a></li>
-                <li><a href="#">Post 2</a></li>
-                <li><a href="#">Post 3</a></li>
-            </ul>
+
+<section class="blog" id="blog">
+  <h2>Blog Posts</h2>
+  <div class="blog-preview-sidebar">
+
+  <form>
+    <label for="category">Category:</label>
+    <select id="category" name="category">
+      <option value="all">All</option>
+      <option value="web">Web Development</option>
+      <option value="mobile">Mobile Development</option>
+      <option value="ai">Artificial Intelligence</option>
+      <option value="design">Design</option>
+    </select>
+
+    <label for="tags">Tags:</label>
+    <select id="tags" name="tags[]" multiple>
+      <option value="javascript">JavaScript</option>
+      <option value="python">Python</option>
+      <option value="kotlin">Kotlin</option>
+      <option value="figma">Figma</option>
+    </select>
+
+    <label for="search">Search:</label>
+    <div class="blog-preview-search">
+            <input type="text" id="search-item" name="search" placeholder="Search..."onkeyup="search()">
+    </div>
+
+    <label for="sort">Sort by:</label>
+    <select id="sort" class="blog-preview-sort" name="sort">
+            <option value="recent" selected>Most Recent</option>
+      <option value="popular">Most Popular</option>
+    </select>
+  </form>
+  </div>
+  <div class="blog-preview">
+    <div class="blog-preview-container">
+      <div class="blog-preview-card" data-tags="Python JavaScript" data-category="web">
+        <div class="blog-preview-image">
+          <img src="blog1.jpg" alt="Blog 1 Image">
         </div>
-    </section>
-    <section class="contact" id="contact">
-        <div class="content">
-            <h2>Contact Me</h2>
-            <p>Feel free to contact me if you have any questions or would like to work together on a project:</p>
-            <ul>
-                <li>Email: example@email.com</li>
-                <li>Phone: +27 -- --- ----</li>
-                <li><a href="#">LinkedIn</a></li>
-            </ul>
+        <div class="blog-preview-info">
+          <h3><a href="#">Web development using Javascript and Python</a></h3>
+          <p class="blog-preview-date">March 25, 2023</p>
+          <p class="blog-preview-duration">10 min read</p>
+          <p class="blog-preview-views">1,234 views</p>
+          <p class="blog-preview-description">Learn how to code in Javascript/Python for web.</p>
         </div>
-    </section>
-  <script>
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('nav ul');
-  
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-      hamburger.classList.toggle('active');
-    });
-  </script>
+      </div>
+      <div class="blog-preview-card" data-tags="Python" data-category="ai">
+        <div class="blog-preview-image">
+          <img src="blog2.jpg" alt="Blog 2 Image">
+        </div>
+        <div class="blog-preview-info">
+          <h3><a href="#">Will AI take over the world?</a></h3>
+          <p class="blog-preview-date">March 20, 2023</p>
+          <p class="blog-preview-duration">5 min read</p>
+          <p class="blog-preview-views">567 views</p>
+          <p class="blog-preview-description">Are computers smarter than us.</p>
+        </div>
+      </div>
+      <div class="blog-preview-card" data-tags="Kotlin" data-category="mobile">
+        <div class="blog-preview-image">
+          <img src="blog3.jpg" alt="Blog 3 Image">
+        </div>
+        <div class="blog-preview-info">
+<h3><a href="#">Building mobile apps with Kotlin</a></h3>
+<p class="blog-preview-date">March 15, 2023</p>
+<p class="blog-preview-duration">8 min read</p>
+<p class="blog-preview-views">789 views</p>
+<p class="blog-preview-description">Learn how to use Kotlin to build mobile apps.</p>
+</div>
+</div>
+<div class="blog-preview-card" data-tags="Figma" data-category="design">
+<div class="blog-preview-image">
+<img src="blog4.jpg" alt="Blog 4 Image">
+</div>
+<div class="blog-preview-info">
+<h3><a href="#">Designing user interfaces with Figma</a></h3>
+<p class="blog-preview-date">March 10, 2023</p>
+<p class="blog-preview-duration">7 min read</p>
+<p class="blog-preview-views">890 views</p>
+<p class="blog-preview-description">Create stunning user interfaces with Figma.</p>
+</div>
+</div>
+</div>
+  </div>
+</section>
+
+
+<section class="contact" id="contact">
+    <div class="content">
+        <h2>Contact Me</h2>
+        <p>If you'd like to get in touch, please fill out the form below:</p>
+        <form action="#">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+            <label for="message">Message</label>
+            <textarea id="message" name="message"></textarea>
+            <input type="submit" value="Send">
+        </form>
+    </div>
+</section>
+
+<footer>
+</footer>
+<script src="main.js"></script>    
 </body>
 </html>
