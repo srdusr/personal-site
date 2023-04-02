@@ -49,10 +49,16 @@ document.getElementById("search-item").addEventListener("keyup", search);
 
 
 
-// Blog filter by:(category/tags) and sort by:(recent/popular)
+
+
+
+
+
+
 const blogPreviewCards = document.querySelectorAll('.blog-preview-card');
 const sortSelect = document.getElementById('sort');
 const categorySelect = document.getElementById('category');
+const tagCheckboxes = document.querySelectorAll('.tag-dropdown input[type="checkbox"]');
 
 // Sort by recent or popular
 sortSelect.addEventListener('change', () => {
@@ -90,5 +96,28 @@ categorySelect.addEventListener('change', () => {
       }
     });
   }
+});
+
+// Filter by tags
+tagCheckboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', () => {
+    const selectedTags = Array.from(tagCheckboxes)
+      .filter(cb => cb.checked)
+      .map(cb => cb.value);
+    
+    if (selectedTags.length === 0) {
+      blogPreviewCards.forEach(card => card.style.display = '');
+    } else {
+      blogPreviewCards.forEach(card => {
+        const cardTags = card.dataset.tags.split(',');
+        const matches = selectedTags.filter(tag => cardTags.includes(tag));
+        if (matches.length === selectedTags.length) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  });
 });
 
