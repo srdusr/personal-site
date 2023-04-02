@@ -75,13 +75,19 @@
       <option value="design">Design</option>
     </select>
 
-    <label for="tags">Tags:</label>
-    <select id="tags" name="tags[]" multiple>
-      <option value="javascript">JavaScript</option>
-      <option value="python">Python</option>
-      <option value="kotlin">Kotlin</option>
-      <option value="figma">Figma</option>
-    </select>
+<label for="tags">Tags:</label>
+<div class="tag-dropdown">
+  <select id="tags" name="tags">
+    <option value="...">...</option>
+    <option value="javascript">JavaScript</option>
+    <option value="python">Python</option>
+    <option value="kotlin">Kotlin</option>
+    <option value="figma">Figma</option>
+    <!-- Add more tags here -->
+  </select>
+</div>
+<button id="clear-tags">Clear</button>
+    <!-- Add more tags here -->
 
     <label for="search">Search:</label>
     <div class="blog-preview-search">
@@ -171,6 +177,6 @@
         <p>&copy; 2023 srdusr | Trevor Gray</p>
     </div>
 </footer>
-<script src="main.js"></script>    
+     <script src="main.js"></script>
 </body>
 </html>
