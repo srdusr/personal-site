@@ -220,17 +220,6 @@ section {
   width: 28%;
 }
 
-.blog-preview-sidebar form {
-}
-
-.blog-preview-sidebar input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-  margin-bottom: 10px;
-}
 
 .blog-preview-search {
   display: flex;
@@ -239,7 +228,6 @@ section {
 }
 
 .blog-preview-search input[type="text"] {
-  flex: 1;
   padding: 0.5rem;
   border-radius: 0.25rem;
   border: 1px solid #ccc;
@@ -263,6 +251,34 @@ section {
 .blog-preview-card:hover {
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
+}
+
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag-button {
+  border: none;
+  border-radius: 16px;
+  padding: 6px 12px;
+  background-color: #eee;
+  color: #555;
+  cursor: pointer;
+}
+
+.tag-button.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.tag-button.selected::after {
+  display: inline-block;
+  margin-left: 5px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 /* Contact section styling */
