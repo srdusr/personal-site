@@ -74,33 +74,30 @@
       <option value="ai">Artificial Intelligence</option>
       <option value="design">Design</option>
     </select>
+  </form>
 
-<label for="tags">Tags:</label>
-<div class="tag-dropdown">
-  <select id="tags" name="tags">
-    <option value="...">...</option>
-    <option value="javascript">JavaScript</option>
-    <option value="python">Python</option>
-    <option value="kotlin">Kotlin</option>
-    <option value="figma">Figma</option>
-    <!-- Add more tags here -->
-  </select>
-</div>
-<button id="clear-tags">Clear</button>
-    <!-- Add more tags here -->
-
-    <label for="search">Search:</label>
-    <div class="blog-preview-search">
-            <input type="text" id="search-item" name="search" placeholder="Search..."onkeyup="search()">
-    </div>
-
+  <form>
     <label for="sort">Sort by:</label>
     <select id="sort" class="blog-preview-sort" name="sort">
             <option value="recent" selected>Most Recent</option>
       <option value="popular">Most Popular</option>
     </select>
   </form>
+
+    <label for="search">Search:</label>
+    <div class="blog-preview-search">
+            <input type="text" id="search-item" name="search" placeholder="Search..."onkeyup="search()">
+    </div>
+
+<label for="tags">Tags:</label>
+<div class="tag-container">
+  <button class="tag-button" data-tag="Python">Python</button>
+  <button class="tag-button" data-tag="JavaScript">JavaScript</button>
+  <button class="tag-button" data-tag="Kotlin">Kotlin</button>
+  <button class="tag-button" data-tag="Figma">Figma</button>
+</div>
   </div>
+
   <div class="blog-preview">
     <div class="blog-preview-container">
       <div class="blog-preview-card" data-tags="Python JavaScript" data-category="web">
