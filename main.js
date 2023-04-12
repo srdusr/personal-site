@@ -23,7 +23,7 @@ links.forEach(link => {
   });
 });
 
-//Blog search 
+// Blog search 
 const search = () => {
   const searchbox = document.getElementById("search-item").value.toUpperCase();
   const blog_preview_card = document.querySelectorAll(".blog-preview-card");
@@ -47,77 +47,90 @@ const search = () => {
 
 document.getElementById("search-item").addEventListener("keyup", search);
 
+// Blog filtering by category and sorting
+const filter = () => {
+  const category = document.getElementById("category").value;
+  const sort = document.getElementById("sort").value;
+  const blog_preview_container = document.querySelector(".blog-preview-container");
+  const blog_preview_cards = document.querySelectorAll(".blog-preview-card");
 
-
-
-
-
-
-
-
-const blogPreviewCards = document.querySelectorAll('.blog-preview-card');
-const sortSelect = document.getElementById('sort');
-const categorySelect = document.getElementById('category');
-const tagCheckboxes = document.querySelectorAll('.tag-dropdown input[type="checkbox"]');
-
-// Sort by recent or popular
-sortSelect.addEventListener('change', () => {
-  if (sortSelect.value === 'recent') {
-    const sortedCards = Array.from(blogPreviewCards).sort((a, b) => {
-      const dateA = new Date(a.querySelector('.blog-preview-date').textContent);
-      const dateB = new Date(b.querySelector('.blog-preview-date').textContent);
-      return dateB - dateA;
-    });
-    sortedCards.forEach((card) => {
-      card.parentElement.prepend(card);
-    });
-  } else {
-    blogPreviewCards.forEach((card) => card.style.display = '');
-    Array.from(blogPreviewCards).sort((a, b) => {
-      const viewsA = parseInt(a.querySelector('.blog-preview-views').textContent);
-      const viewsB = parseInt(b.querySelector('.blog-preview-views').textContent);
-      return viewsB - viewsA;
-    }).forEach((card) => {
-      card.parentElement.prepend(card);
-    });
-  }
-});
-
-// Filter by category
-categorySelect.addEventListener('change', () => {
-  if (categorySelect.value === 'all') {
-    blogPreviewCards.forEach(card => card.style.display = '');
-  } else {
-    blogPreviewCards.forEach(card => {
-      if (card.dataset.category !== categorySelect.value) {
-        card.style.display = 'none';
-      } else {
-        card.style.display = '';
-      }
-    });
-  }
-});
-
-// Filter by tags
-tagCheckboxes.forEach(checkbox => {
-  checkbox.addEventListener('change', () => {
-    const selectedTags = Array.from(tagCheckboxes)
-      .filter(cb => cb.checked)
-      .map(cb => cb.value);
-    
-    if (selectedTags.length === 0) {
-      blogPreviewCards.forEach(card => card.style.display = '');
+  // Filter by category
+  for (let card of blog_preview_cards) {
+    if (category === "all" || card.dataset.category === category) {
+      card.style.display = "";
     } else {
-      blogPreviewCards.forEach(card => {
-        const cardTags = card.dataset.tags.split(',');
-        const matches = selectedTags.filter(tag => cardTags.includes(tag));
-        if (matches.length === selectedTags.length) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
-      });
+      card.style.display = "none";
     }
+  }
+
+  // Sort by recent or popular
+  if (sort === "recent") {
+    blog_preview_container.innerHTML = "";
+    const cardsArray = Array.from(blog_preview_cards);
+    const sortedCardsArray = cardsArray.sort((a, b) => {
+      const aDate = new Date(a.querySelector(".blog-preview-date").textContent);
+      const bDate = new Date(b.querySelector(".blog-preview-date").textContent);
+      return bDate - aDate;
+    });
+    sortedCardsArray.forEach(card => {
+      blog_preview_container.appendChild(card);
+    });
+  } else {
+    blog_preview_container.innerHTML = "";
+    const cardsArray = Array.from(blog_preview_cards);
+    const sortedCardsArray = cardsArray.sort((a, b) => {
+      const aViews = parseInt(a.querySelector(".blog-preview-views").textContent.replace(/\D/g, ""));
+      const bViews = parseInt(b.querySelector(".blog-preview-views").textContent.replace(/\D/g, ""));
+      return bViews - aViews;
+    });
+    sortedCardsArray.forEach(card => {
+      blog_preview_container.appendChild(card);
+    });
+  }
+}
+
+document.getElementById("category").addEventListener("change", filter);
+document.getElementById("sort").addEventListener("change", filter);
+
+// Blog filtering by tag selection
+
+const tags = document.querySelectorAll(".tag-button");
+
+tags.forEach(tag => {
+  tag.addEventListener("click", () => {
+    tag.classList.toggle("selected");
+    filterPosts();
   });
 });
 
+const filterPosts = () => {
+  const selectedTags = document.querySelectorAll(".tag-button.selected");
+  const blogPreviewCards = document.querySelectorAll(".blog-preview-card");
+
+  blogPreviewCards.forEach(card => {
+    const tags = card.getAttribute("data-tags").split(" ");
+    const category = card.getAttribute("data-category");
+
+    let visible = true;
+
+    if (category !== document.getElementById("category").value && document.getElementById("category").value !== "all") {
+      visible = false;
+    }
+
+    if (visible) {
+      selectedTags.forEach(tag => {
+        if (!tags.includes(tag.getAttribute("data-tag"))) {
+          visible = false;
+        }
+      });
+    }
+
+    if (visible) {
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
+  });
+};
+
+document.getElementById("category").addEventListener("change", filterPosts);
