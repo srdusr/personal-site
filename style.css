@@ -394,15 +394,6 @@ footer a:hover {
 
 /* Responsive design */
 @media (max-width: 768px) {
-  header h1 p {
-    margin-top: 70px;
-    margin-bottom: 70px;
-    width: 90%; /* adjust the width for mobile screens */
-    left: 1.5rem;
-    right: 1.5rem;
-    height: 100vh;
-    flex-direction: column;
-  }
 nav ul {
   flex-direction: column;
   position: absolute;
@@ -428,6 +419,84 @@ nav ul li a {
 nav ul.show {
   display: flex;
 }
+  /* Header styling */
+
+header {
+    width: 85%;
+    height: auto;
+    margin: 2rem;
+    margin-left: 3.5rem;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  border-radius: 20px;
+  border: 2px solid #fff;
+  position: relative;
+}
+
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  /* About section styling */
+  .about {
+    width: 85%;
+      left: 0rem;
+    margin: 0rem;
+      padding: 2rem;
+
+  }
+  .about h2 {
+    font-size: 1.5rem;
+  }
+
+
+  /* Blog Preview section styling */
+  .blog-preview-container {
+    width: 90%;
+    max-width: 100%;
+    max-height: none;
+  }
+
+
+  .blog-preview-card {
+    flex-direction: column;
+    margin-bottom: 2rem;
+    height: calc(33.33% - 5px);
+    overflow-y: visible;
+  }
+
+  .blog-preview-image {
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .blog-preview-info {
+    width: 100%;
+  }
+
+  .blog-preview-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .blog-preview-description {
+    font-size: 1rem;
+  }
+
+  .blog-preview-sidebar {
+    width: 100%;
+    float: none;
+  }
+
+  .blog-preview-search input[type="text"] {
+    width: 100%;
+    margin-right: 0.5rem;
+  }
 
 .hamburger {
   display: block;
