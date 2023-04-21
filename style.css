@@ -380,9 +380,10 @@ font-weight: bold;
 transition: color 0.2s ease-in-out;
 }
 
+/*
 footer a:hover {
 /*color: #ff6dff;*/
-}
+/*} 
 
 /* Move header and paragraph to the right on desktop */
 /*@media (min-width: 768px) {
