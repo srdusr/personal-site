@@ -134,9 +134,8 @@ section {
 .featured-projects h2 {
   font-size: 2rem;
   margin-right: auto;
-  margin-top: 0.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .featured-projects .project {
