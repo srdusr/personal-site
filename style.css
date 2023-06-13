@@ -287,13 +287,18 @@ section {
 
 /* Contact section styling */
 .contact {
-margin-top: 70px; 
-height: 100vh;
+margin-top: 5rem; 
+margin: 0 auto;
+width: 70%;
+height: 400px;
 display: flex;
+flex-direction: column;
 justify-content: center;
 align-items: center;
 border-radius: 20px;
 border: 2px solid #fff;
+position: relative;
+padding: 2rem;
 }
 
 .contact:before {
@@ -316,32 +321,47 @@ font-size: 1.2rem;
 }
 
 .contact form {
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
 }
 
-.contact form label {
-font-size: 1.2rem;
-margin-bottom: 0.5rem;
+.contact form .input-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
-.contact form input[type="text"],
-.contact form input[type="email"],
+.contact form .input-row .input-group {
+  flex-basis: calc(50% - 5px); /* Adjust the value as needed */
+}
+
+.contact form .input-row .input-group:nth-child(2) {
+  margin-left: 10px; /* Adjust the value as needed */
+}
+
+.contact form .input-group input[type="text"],
+.contact form .input-group input[type="email"] {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 1rem;
+  box-sizing: border-box; /* Add this property */
+}
+
 .contact form textarea {
-width: 100%;
-padding: 0.5rem;
-font-size: 1rem;
-border-radius: 5px;
-border: none;
-margin-bottom: 1rem;
-}
-
-.contact form textarea {
-height: 150px;
-resize: none;
+  width: calc(100% - 5px); /* Adjust the value as needed */
+  height: 150px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 1rem;
+  box-sizing: border-box; /* Add this property */
 }
 
 .contact form input[type="submit"] {
@@ -497,6 +517,20 @@ header {
   .blog-preview-search input[type="text"] {
     width: 100%;
     margin-right: 0.5rem;
+  }
+
+  .contact {
+    width: 90%; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+    padding: 1rem; /* Adjust padding as needed */
+  }
+
+  .contact h2 {
+    font-size: 1.5rem; /* Adjust font size as needed */
+  }
+
+  .contact p {
+    font-size: 1rem; /* Adjust font size as needed */
   }
 
 .hamburger {
