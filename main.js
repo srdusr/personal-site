@@ -134,3 +134,87 @@ const filterPosts = () => {
 };
 
 document.getElementById("category").addEventListener("change", filterPosts);
+
+
+// Contact form
+
+// Get form element and add submit event listener
+const form = document.getElementById('contact-form');
+form.addEventListener('submit', handleSubmit);
+
+// Handle form submission
+function handleSubmit(event) {
+    event.preventDefault(); // Prevent the form from submitting
+
+    // Validate the form
+    if (validateForm()) {
+        // If the form is valid, send the data
+        sendForm();
+    }
+}
+
+// Validate the form
+function validateForm() {
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+
+    // Validation
+    if (nameInput.value.trim() === '') {
+        alert('Please enter your name.');
+        nameInput.focus();
+        return false;
+    }
+
+    if (emailInput.value.trim() === '') {
+        alert('Please enter your email.');
+        emailInput.focus();
+        return false;
+    }
+
+    if (messageInput.value.trim() === '') {
+        alert('Please enter your message.');
+        messageInput.focus();
+        return false;
+    }
+
+    return true; // Form is valid
+}
+
+// Send form data
+function sendForm() {
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+
+    // Create a new FormData object and append the form data
+    const formData = new FormData();
+    formData.append('name', nameInput.value);
+    formData.append('email', emailInput.value);
+    formData.append('message', messageInput.value);
+
+    // Send a POST request to contact.php
+    fetch('contact.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.text();
+        }
+        throw new Error('Network response was not ok.');
+    })
+    .then(result => {
+        if (result === 'success') {
+            alert('Message sent successfully!');
+            form.reset();
+        } else {
+            alert('An error occurred. Please try again.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+    });
+}
+
