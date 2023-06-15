@@ -15,4 +15,6 @@
 - [ ] Create a logo  
 - [ ] Add favicon  
 - [ ] Add CAPTCHA to Contact form  
+- [ ] Add RSS feed button  
+- [ ] (Optional) Add night/light toggle button  
 
