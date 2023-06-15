@@ -12,4 +12,6 @@
 - [ ] Choose suitable fonts to use  
 - [ ] Enter page with enter click button  
 - [ ] List skills and technologies  
+- [ ] Create a logo  
+- [ ] Add favicon  
 
