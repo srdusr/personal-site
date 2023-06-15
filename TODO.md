@@ -14,4 +14,5 @@
 - [ ] List skills and technologies  
 - [ ] Create a logo  
 - [ ] Add favicon  
+- [ ] Add CAPTCHA to Contact form  
 
