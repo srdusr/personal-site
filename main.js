@@ -214,7 +214,7 @@ function sendForm() {
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('An error occurred. Please try again.');
+        alert('Unknown error occurred. Please try again.');
     });
 }
 
