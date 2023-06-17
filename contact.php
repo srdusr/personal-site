@@ -7,12 +7,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validate input
     if (empty($name) || empty($email) || empty($message)) {
+        logError('Incomplete form data');
         echo 'error';
         exit; // Stop script execution
     }
 
     // Validate email format
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        logError('Invalid email format');
         echo 'error';
         exit; // Stop script execution
     }
@@ -50,7 +52,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (mail($to, $subject, $body, $headers)) {
         echo 'success'; // Send a response back to main.js
     } else {
+        logError('Failed to send email');
         echo 'error';
     }
+}
+
+function logError($message) {
+    // Log the error message to a file or error log
+    error_log('Contact form error: ' . $message, 0);
 }
 ?>
