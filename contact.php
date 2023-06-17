@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Get form data
     $name = $_POST['name'];
