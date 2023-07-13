@@ -17,4 +17,5 @@
 - [ ] Add CAPTCHA to Contact form  
 - [ ] Add RSS feed button  
 - [ ] (Optional) Add night/light toggle button  
+- [ ] self hosted git/VSC
 
