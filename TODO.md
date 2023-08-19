@@ -17,5 +17,5 @@
 - [ ] Add CAPTCHA to Contact form  
 - [ ] Add RSS feed button  
 - [ ] (Optional) Add night/light toggle button  
-- [ ] self hosted git/VSC
+- [ ] Version control system (git) on personal website, a "self-hosted Git server" or a "self-hosted Git repository management system."
 
