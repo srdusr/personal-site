@@ -123,6 +123,40 @@
 
     <section class="blog" id="blog">
         <h2>Blog Posts</h2>
+        <div class="blog-preview-sidebar">
+            <form>
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    <option value="all">All</option>
+                    <option value="web">Web Development</option>
+                    <option value="mobile">Mobile Development</option>
+                    <option value="ai">Artificial Intelligence</option>
+                    <option value="design">Design</option>
+                </select>
+            </form>
+
+            <form>
+                <label for="sort">Sort by:</label>
+                <select id="sort" class="blog-preview-sort" name="sort">
+                    <option value="recent" selected>Most Recent</option>
+                    <option value="popular">Most Popular</option>
+                </select>
+            </form>
+
+            <label for="search">Search:</label>
+            <div class="blog-preview-search">
+                <input type="text" id="search-item" name="search" placeholder="Search..." onkeyup="search()" />
+            </div>
+
+            <label for="tags">Tags:</label>
+            <div class="tag-container">
+                <button class="tag-button" data-tag="Python">Python</button>
+                <button class="tag-button" data-tag="JavaScript">JavaScript</button>
+                <button class="tag-button" data-tag="Kotlin">Kotlin</button>
+                <button class="tag-button" data-tag="Figma">Figma</button>
+            </div>
+        </div>
+
         <div class="blog-preview">
             <div class="blog-preview-container">
                 <div class="blog-preview-card" data-tags="Python JavaScript" data-category="web">
@@ -182,39 +216,6 @@
                             Create stunning user interfaces with Figma.
                         </p>
                     </div>
-                </div>
-            </div>
-            <div class="blog-preview-sidebar">
-                <form>
-                    <label for="category">Category:</label>
-                    <select id="category" name="category">
-                        <option value="all">All</option>
-                        <option value="web">Web Development</option>
-                        <option value="mobile">Mobile Development</option>
-                        <option value="ai">Artificial Intelligence</option>
-                        <option value="design">Design</option>
-                    </select>
-                </form>
-
-                <form>
-                    <label for="sort">Sort by:</label>
-                    <select id="sort" class="blog-preview-sort" name="sort">
-                        <option value="recent" selected>Most Recent</option>
-                        <option value="popular">Most Popular</option>
-                    </select>
-                </form>
-
-                <label for="search">Search:</label>
-                <div class="blog-preview-search">
-                    <input type="text" id="search-item" name="search" placeholder="Search..." onkeyup="search()" />
-                </div>
-
-                <label for="tags">Tags:</label>
-                <div class="tag-container">
-                    <button class="tag-button" data-tag="Python">Python</button>
-                    <button class="tag-button" data-tag="JavaScript">JavaScript</button>
-                    <button class="tag-button" data-tag="Kotlin">Kotlin</button>
-                    <button class="tag-button" data-tag="Figma">Figma</button>
                 </div>
             </div>
         </div>
