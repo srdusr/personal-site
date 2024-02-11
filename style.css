@@ -490,6 +490,27 @@ footer a:hover {
         font-size: 1.5rem;
     }
 
+    .about {
+        margin-top: 70px;
+        left: 2rem;
+        width: 85%;
+        height: 1300px;
+        display: flex;
+        justify-content: center;
+        border-radius: 20px;
+        border: 2px solid #fff;
+    }
+
+    .blog {
+        display: flex;
+        flex-direction: column-reverse;
+        /* Reverse stacking order in mobile view */
+    }
+
+    .blog-preview {
+        display: flex;
+    }
+
     /* Blog Preview section styling */
     .blog-preview-container {
         width: 90%;
