@@ -23,21 +23,21 @@ links.forEach(link => {
   });
 });
 
-// Blog search 
+// Blog search
 const search = () => {
   const searchbox = document.getElementById("search-item").value.toUpperCase();
   const blog_preview_card = document.querySelectorAll(".blog-preview-card");
   const blog_preview_info = document.querySelectorAll(".blog-preview-card h3");
 
-  for(var i=0; i < blog_preview_info.length; i++) {
+  for (var i = 0; i < blog_preview_info.length; i++) {
     let match = blog_preview_info[i];
 
-    if(match){
+    if (match) {
       let textvalue = match.textContent || match.innerHTML
 
-      if(textvalue.toUpperCase().indexOf(searchbox) > -1) {
+      if (textvalue.toUpperCase().indexOf(searchbox) > -1) {
         blog_preview_card[i].style.display = "";
-      } 
+      }
       else {
         blog_preview_card[i].style.display = "none";
       }
@@ -138,83 +138,109 @@ document.getElementById("category").addEventListener("change", filterPosts);
 
 // Contact form
 
+// Pressing contact button goes a little above the contact section
+//document.addEventListener('DOMContentLoaded', function() {
+//  var contactButton = document.querySelector('.nav a[href="#contact"]');
+//  var contactSection = document.getElementById('contact');
+//
+//  contactButton.addEventListener('click', function(event) {
+//    event.preventDefault();
+//    contactSection.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+//  });
+//});
+
+document.addEventListener('DOMContentLoaded', function() {
+  var contactButton = document.querySelector('.nav a[href="#contact"]');
+  var contactSection = document.getElementById('contact');
+  var navHeight = document.querySelector('nav').offsetHeight;
+
+  contactButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    var offset = contactSection.offsetTop - navHeight;
+    window.scrollTo({
+      top: offset,
+      behavior: 'smooth'
+    });
+  });
+});
+
 // Get form element and add submit event listener
 const form = document.getElementById('contact-form');
 form.addEventListener('submit', handleSubmit);
 
 // Handle form submission
 function handleSubmit(event) {
-    event.preventDefault(); // Prevent the form from submitting
+  event.preventDefault(); // Prevent the form from submitting
 
-    // Validate the form
-    if (validateForm()) {
-        // If the form is valid, send the data
-        sendForm();
-    }
+  // Validate the form
+  if (validateForm()) {
+    // If the form is valid, send the data
+    sendForm();
+  }
 }
 
 // Validate the form
 function validateForm() {
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const messageInput = document.getElementById('message');
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const messageInput = document.getElementById('message');
 
-    // Validation
-    if (nameInput.value.trim() === '') {
-        alert('Please enter your name.');
-        nameInput.focus();
-        return false;
-    }
+  // Validation
+  if (nameInput.value.trim() === '') {
+    alert('Please enter your name.');
+    nameInput.focus();
+    return false;
+  }
 
-    if (emailInput.value.trim() === '') {
-        alert('Please enter your email.');
-        emailInput.focus();
-        return false;
-    }
+  if (emailInput.value.trim() === '') {
+    alert('Please enter your email.');
+    emailInput.focus();
+    return false;
+  }
 
-    if (messageInput.value.trim() === '') {
-        alert('Please enter your message.');
-        messageInput.focus();
-        return false;
-    }
+  if (messageInput.value.trim() === '') {
+    alert('Please enter your message.');
+    messageInput.focus();
+    return false;
+  }
 
-    return true; // Form is valid
+  return true; // Form is valid
 }
 
 // Send form data
 function sendForm() {
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const messageInput = document.getElementById('message');
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const messageInput = document.getElementById('message');
 
-    // Create a new FormData object and append the form data
-    const formData = new FormData();
-    formData.append('name', nameInput.value);
-    formData.append('email', emailInput.value);
-    formData.append('message', messageInput.value);
+  // Create a new FormData object and append the form data
+  const formData = new FormData();
+  formData.append('name', nameInput.value);
+  formData.append('email', emailInput.value);
+  formData.append('message', messageInput.value);
 
-    // Send a POST request to contact.php
-    fetch('contact.php', {
-        method: 'POST',
-        body: formData
-    })
+  // Send a POST request to contact.php
+  fetch('contact.php', {
+    method: 'POST',
+    body: formData
+  })
     .then(response => {
-        if (response.ok) {
-            return response.text();
-        }
-        throw new Error('Network response was not ok.');
+      if (response.ok) {
+        return response.text();
+      }
+      throw new Error('Network response was not ok.');
     })
     .then(result => {
-        if (result === 'success') {
-            alert('Message sent successfully!');
-            form.reset();
-        } else {
-            alert('An error occurred. Please try again.');
-        }
+      if (result === 'success') {
+        alert('Message sent successfully!');
+        form.reset();
+      } else {
+        alert('An error occurred. Please try again.');
+      }
     })
     .catch(error => {
-        console.error('Error:', error);
-        alert('Unknown error occurred. Please try again.');
+      console.error('Error:', error);
+      alert('Unknown error occurred. Please try again.');
     });
 }
 
