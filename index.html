@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>srdusr</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 
 <body>
@@ -26,223 +27,240 @@
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
-
-    <header id="header">
-        <h1><span style="font-size: 0.5em">Trevor Gray</span></h1>
-        <p>
-            Hi there, I'm <span style="font-weight: bold">srdusr</span>, an
-            ambitious self-taught<span style="font-weight: bold">
-                IT Specialist</span>
-            from Souwh Africa with a multifaceted interest in software development,
-            DevOps, sysadmin, networking, and infosec. I occasionally share what I
-            learn on my blog and dedicate my free time to refining my skills and
-            exploring new technologies in my personal homelab. When not immersed in
-            coding or other projects, you can often find me optimizing my developer
-            workflow or honing my skills in modern-day fencing (the one with swords
-            in it).
-        </p>
-        <p>
-            If you're interested in learning more about me or exploring potential
-            projects or job opportunities, please don't hesitate to get in touch.
-        </p>
-    </header>
-
-    <section class="about" id="about">
-        <div class="content">
-            <h2>About Me</h2>
-            <p>
-                <span style="font-weight: bold">Srdusr:</span> (noun/alias) A
-                combination of the words "sword" and "user", shortened for
-                convenicence and styled in the fashion of linux commands.<br />Example:
-                Srdusr, akin to a command-line ninja, slashes through technical
-                challenges with the agility and precision of a well-honed blade...
-            </p>
-            <p>
-                Equipped with a diverse skill set spanning software development,
-                deployment, server administration, networking and security. My
-                approach blends technical prowess with creative problem-solving,
-                ensuring success in every project I undertake.
-            </p>
-            <p>
-                Specializing in DevOps methodologies, I excel at crafting seamless
-                CI/CD pipelines, implementing infrastructure as code (IaC), and
-                leveraging containerization technologies like Docker and Kubernetes.
-                Additionally, my expertise extends to sysadmin tasks, where I focus on
-                configuring, maintaining, and fortifying servers for optimal
-                reliability, scalability, and security. I have a strong command of
-                Linux administration and am proficient in both Type-1 and Type-2
-                virtualization technologies. Moreover, I am well-versed in networking
-                principles, adept at configuring and optimizing network infrastructure
-                for performance and security.
-            </p>
-            <p>
-                In the realm of information security, I excel in implementing and
-                managing robust security measures, including penetration testing,
-                vulnerability assessments, cyber forensics, and incident response. My
-                development skills are centered around backend systems, leveraging
-                languages such as C, Rust, Bash, and Python to build efficient and
-                resilient solutions.
-            </p>
-            <p>
-                Driven by a passion for continuous improvement, I'm always eager to
-                expand my skill set and stay ahead of industry trends. If you're in
-                need of a versatile and proactive IT professional, let's discuss how I
-                can contribute to your success and help you overcome any challenges
-                you face.
-            </p>
-        </div>
-    </section>
-
-    <section class="featured-projects" id="featured-projects">
-        <h2>Featured Projects</h2>
-        <div class="content">
-            <p>Here are some of the projects I have worked on:</p>
-            <div class="project">
-                <p>Typerpunk, a rust based cli/tui typing game</p>
-                <a href="https://github.com/srdusr/typerpunk">
-                    <img src="typerpunk.jpg" alt="Project 1" />
-                </a>
-            </div>
-            <div class="project">
+    <div class="content-wrapper">
+        <header class="header" id="header">
+            <div class="content">
+                <h2>Trevor Gray</h2>
                 <p>
-                    Eva (Efficiency Virtual Assistant), a python based cli/tui sysinfo
-                    analysis
+                    Hi there, I'm <strong>srdusr</strong>, a self-taught IT Specialist
+                    from South Africa with a passion for software development, sysadmin,
+                    networking, and infosec. I spend my free time refining my skills,
+                    exploring new technologies in my personal homelab and sharing my
+                    insights in my blog. When not coding, you can find me optimizing my
+                    workflow or practicing modern-day fencing (the one with swords in
+                    it).
                 </p>
-                <a href="https://github.com/srdusr/eva">
-                    <img src="eva.jpg" alt="Project 2" />
-                </a>
+                <p>
+                    Interested in learning more about me or discussing potential
+                    projects? Feel free to get in touch!
+                </p>
+                <div class="button-container">
+                    <a href="resume.pdf" class="button"><i class="fas fa-file-pdf"></i> Resume</a>
+                    <a href="#contact" class="button"><i class="fas fa-address-card"></i> Contact</a>
+                </div>
             </div>
-            <div class="project">
-                <p>Cerberus, a C based cli/tui password manager</p>
-                <a href="https://github.com/srdusr/cerberus">
-                    <img src="cerberus.jpg" alt="Project 3" />
-                </a>
-            </div>
-        </div>
-    </section>
+        </header>
 
-    <section class="blog" id="blog">
-        <h2>Blog Posts</h2>
-        <div class="blog-preview">
-            <div class="blog-preview-container">
-                <div class="blog-preview-card" data-tags="Python JavaScript" data-category="web">
-                    <div class="blog-preview-image">
-                        <img src="blog1.jpg" alt="Blog 1 Image" />
-                    </div>
-                    <div class="blog-preview-info">
-                        <h3>
-                            <a href="#">Web development using Javascript and Python</a>
-                        </h3>
-                        <p class="blog-preview-date">March 25, 2023</p>
-                        <p class="blog-preview-duration">10 min read</p>
-                        <p class="blog-preview-views">1,234 views</p>
-                        <p class="blog-preview-description">
-                            Learn how to code in Javascript/Python for web.
-                        </p>
-                    </div>
+        <section class="about" id="about">
+            <div class="content">
+                <h2>About Me</h2>
+                <p>
+                    <span style="font-weight: bold">srdusr</span><br />
+                    (noun/alias) • /ˈsərdəzər/ <br />
+                    • A combination of the words "sword" and "user", shortened for
+                    convenience and styled in the fashion of Linux commands. <br />
+                    • Example: Srdusr, akin to a command-line ninja, slashes through
+                    technical challenges with the agility and precision of a well-honed
+                    blade...
+                </p>
+                <p>
+                    Equipped with a diverse skill set spanning software development,
+                    server administration, networking and security. My approach blends
+                    technical prowess with creative problem-solving, ensuring success in
+                    every project I undertake.
+                </p>
+                <p>
+                    Specializing in Linux administration, virtualization technologies
+                    and automation. I excel in configuring, maintaining, and fortifying
+                    servers for optimal reliability, scalability, and security.
+                    Moreover, I am well-versed in networking principles, adept at
+                    fine-tuning and maximizing network infrastructure for performance
+                    and security.
+                </p>
+                <p>
+                    In the realm of information security, I excel in implementing and
+                    managing robust security measures, including penetration testing,
+                    vulnerability assessments, cyber forensics, and incident response.
+                    My development skills are centered around backend systems,
+                    leveraging languages such as C, Rust, Bash, and Python to build
+                    efficient and resilient solutions.
+                </p>
+                <p>
+                    Driven by a passion for continuous improvement, I'm always eager to
+                    expand my skill set and stay ahead of industry trends. If you're in
+                    need of a versatile and proactive IT professional, let's discuss how
+                    I can contribute to your success and help you overcome any
+                    challenges you face.
+                </p>
+            </div>
+        </section>
+
+        <section class="featured-projects" id="featured-projects">
+            <div class="content">
+                <h2>Featured Projects</h2>
+                <p>Here are some of the projects I have worked on:</p>
+                <div class="project">
+                    <p>Typerpunk, a rust based cli/tui typing game</p>
+                    <a href="https://github.com/srdusr/typerpunk">
+                        <img src="typerpunk.jpg" alt="Typerpunk Project" />
+                    </a>
                 </div>
-                <div class="blog-preview-card" data-tags="Python" data-category="ai">
-                    <div class="blog-preview-image">
-                        <img src="blog2.jpg" alt="Blog 2 Image" />
-                    </div>
-                    <div class="blog-preview-info">
-                        <h3><a href="#">Will AI take over the world?</a></h3>
-                        <p class="blog-preview-date">March 20, 2023</p>
-                        <p class="blog-preview-duration">5 min read</p>
-                        <p class="blog-preview-views">567 views</p>
-                        <p class="blog-preview-description">
-                            Are computers smarter than us.
-                        </p>
-                    </div>
+                <div class="project">
+                    <p>
+                        Eva (Efficiency Virtual Assistant), a python based cli/tui sysinfo
+                        analysis
+                    </p>
+                    <a href="https://github.com/srdusr/eva">
+                        <img src="eva.jpg" alt="Eva Project" />
+                    </a>
                 </div>
-                <div class="blog-preview-card" data-tags="Kotlin" data-category="mobile">
-                    <div class="blog-preview-image">
-                        <img src="blog3.jpg" alt="Blog 3 Image" />
-                    </div>
-                    <div class="blog-preview-info">
-                        <h3><a href="#">Building mobile apps with Kotlin</a></h3>
-                        <p class="blog-preview-date">March 15, 2023</p>
-                        <p class="blog-preview-duration">8 min read</p>
-                        <p class="blog-preview-views">789 views</p>
-                        <p class="blog-preview-description">
-                            Learn how to use Kotlin to build mobile apps.
-                        </p>
-                    </div>
+                <div class="project">
+                    <p>Cerberus, a C based cli/tui password manager</p>
+                    <a href="https://github.com/srdusr/cerberus">
+                        <img src="cerberus.jpg" alt="Cerberus Project" />
+                    </a>
                 </div>
-                <div class="blog-preview-card" data-tags="Figma" data-category="design">
-                    <div class="blog-preview-image">
-                        <img src="blog4.jpg" alt="Blog 4 Image" />
+            </div>
+        </section>
+
+        <section class="blog" id="blog">
+            <h2>Blog Posts</h2>
+            <div class="content">
+                <div class="blog-preview">
+                    <div class="blog-preview-container">
+                        <div class="blog-preview-card" data-tags="Python JavaScript" data-category="web">
+                            <div class="blog-preview-image">
+                                <img src="blog1.jpg" alt="Web Development Blog Post" />
+                            </div>
+                            <div class="blog-preview-info">
+                                <h3>
+                                    <a href="#">Web development using Javascript and Python</a>
+                                </h3>
+                                <p class="blog-preview-date">March 25, 2023</p>
+                                <p class="blog-preview-duration">10 min read</p>
+                                <p class="blog-preview-views">1,234 views</p>
+                                <p class="blog-preview-description">
+                                    Learn how to code in Javascript/Python for web.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="blog-preview-card" data-tags="Python" data-category="ai">
+                            <div class="blog-preview-image">
+                                <img src="blog2.jpg" alt="AI Blog Post" />
+                            </div>
+                            <div class="blog-preview-info">
+                                <h3><a href="#">Will AI take over the world?</a></h3>
+                                <p class="blog-preview-date">March 20, 2023</p>
+                                <p class="blog-preview-duration">5 min read</p>
+                                <p class="blog-preview-views">567 views</p>
+                                <p class="blog-preview-description">
+                                    Are computers smarter than us.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="blog-preview-card" data-tags="Kotlin" data-category="mobile">
+                            <div class="blog-preview-image">
+                                <img src="blog3.jpg" alt="Mobile Development Blog Post" />
+                            </div>
+                            <div class="blog-preview-info">
+                                <h3><a href="#">Building mobile apps with Kotlin</a></h3>
+                                <p class="blog-preview-date">March 15, 2023</p>
+                                <p class="blog-preview-duration">8 min read</p>
+                                <p class="blog-preview-views">789 views</p>
+                                <p class="blog-preview-description">
+                                    Learn how to use Kotlin to build mobile apps.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="blog-preview-card" data-tags="Figma" data-category="design">
+                            <div class="blog-preview-image">
+                                <img src="blog4.jpg" alt="Design Blog Post" />
+                            </div>
+                            <div class="blog-preview-info">
+                                <h3><a href="#">Designing user interfaces with Figma</a></h3>
+                                <p class="blog-preview-date">March 10, 2023</p>
+                                <p class="blog-preview-duration">7 min read</p>
+                                <p class="blog-preview-views">890 views</p>
+                                <p class="blog-preview-description">
+                                    Create stunning user interfaces with Figma.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="blog-preview-info">
-                        <h3><a href="#">Designing user interfaces with Figma</a></h3>
-                        <p class="blog-preview-date">March 10, 2023</p>
-                        <p class="blog-preview-duration">7 min read</p>
-                        <p class="blog-preview-views">890 views</p>
-                        <p class="blog-preview-description">
-                            Create stunning user interfaces with Figma.
-                        </p>
+
+                    <div class="blog-preview-sidebar">
+                        <form>
+                            <label for="category">Category:</label>
+                            <select id="category" name="category">
+                                <option value="all">All</option>
+                                <option value="web">Web Development</option>
+                                <option value="mobile">Mobile Development</option>
+                                <option value="ai">Artificial Intelligence</option>
+                                <option value="design">Design</option>
+                            </select>
+                        </form>
+
+                        <form>
+                            <label for="sort">Sort by:</label>
+                            <select id="sort" class="blog-preview-sort" name="sort">
+                                <option value="recent" selected>Most Recent</option>
+                                <option value="popular">Most Popular</option>
+                            </select>
+                        </form>
+
+                        <label for="search">Search:</label>
+                        <div class="blog-preview-search">
+                            <input type="text" id="search-item" name="search" placeholder="Search..."
+                                onkeyup="search()" />
+                        </div>
+
+                        <label for="tags">Tags:</label>
+                        <div class="tag-container">
+                            <button class="tag-button" data-tag="Python">Python</button>
+                            <button class="tag-button" data-tag="JavaScript">
+                                JavaScript
+                            </button>
+                            <button class="tag-button" data-tag="Kotlin">Kotlin</button>
+                            <button class="tag-button" data-tag="Figma">Figma</button>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="blog-preview-sidebar">
-                <form>
-                    <label for="category">Category:</label>
-                    <select id="category" name="category">
-                        <option value="all">All</option>
-                        <option value="web">Web Development</option>
-                        <option value="mobile">Mobile Development</option>
-                        <option value="ai">Artificial Intelligence</option>
-                        <option value="design">Design</option>
-                    </select>
+        <section class="contact" id="contact">
+            <div class="content">
+                <h2>Contact Me</h2>
+                <p>If you'd like to get in touch, please fill out the form below:</p>
+                <form id="contact-form" action="#">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <input type="text" id="name" name="name" placeholder="Name" required />
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <input type="email" id="email" name="email" placeholder="Email" required />
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <textarea id="message" name="message" placeholder="Message" required></textarea>
+                    </div>
+                    <div class="input-row">
+                        <button type="submit" class="send-button">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </div>
                 </form>
-
-                <form>
-                    <label for="sort">Sort by:</label>
-                    <select id="sort" class="blog-preview-sort" name="sort">
-                        <option value="recent" selected>Most Recent</option>
-                        <option value="popular">Most Popular</option>
-                    </select>
-                </form>
-
-                <label for="search">Search:</label>
-                <div class="blog-preview-search">
-                    <input type="text" id="search-item" name="search" placeholder="Search..." onkeyup="search()" />
-                </div>
-
-                <label for="tags">Tags:</label>
-                <div class="tag-container">
-                    <button class="tag-button" data-tag="Python">Python</button>
-                    <button class="tag-button" data-tag="JavaScript">JavaScript</button>
-                    <button class="tag-button" data-tag="Kotlin">Kotlin</button>
-                    <button class="tag-button" data-tag="Figma">Figma</button>
-                </div>
             </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <div class="content">
-            <h2>Contact Me</h2>
-            <p>If you'd like to get in touch, please fill out the form below:</p>
-            <form id="contact-form" action="#">
-                <div class="input-row">
-                    <div class="input-group">
-                        <input type="text" id="name" name="name" placeholder="Name" required />
-                    </div>
-                    <div class="input-group">
-                        <input type="email" id="email" name="email" placeholder="Email" required />
-                    </div>
-                </div>
-                <textarea id="message" name="message" placeholder="Message" required></textarea>
-                <input type="submit" value="Send" />
-            </form>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <footer>
         <div class="content">
-            <p>&copy; 2023-2024 srdusr | Trevor Gray</p>
+            <span class="left-text">&copy; 2023-2024 srdusr</span>
+            <span class="logo">|</span>
+            <span class="right-text">Trevor Gray</span>
         </div>
     </footer>
     <script src="main.js"></script>
