@@ -7,8 +7,10 @@ body {
     overflow-x: hidden;
 }
 
-.projects {
-    padding-top: 50px;
+.content-wrapper {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Navbar styling */
@@ -16,7 +18,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 0.5rem;
     position: fixed;
     top: 0;
     width: 99%;
@@ -26,8 +28,9 @@ nav {
 }
 
 nav h1 {
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin: 0;
+    margin-left: 1rem;
 }
 
 nav ul {
@@ -54,35 +57,11 @@ nav ul li a:hover {
     color: #ff6dff;
 }
 
-/* Header styling */
-header {
-    margin-top: 5rem;
-    margin-left: 400px;
-    right: 3.5rem;
-    width: 55%;
-    height: 400px;
+.content-wrapper {
+    min-height: calc(100vh - 60px);
+    padding-bottom: 60px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    text-align: left;
-    border-radius: 20px;
-    border: 2px solid #fff;
-    position: relative;
-    padding: 2rem;
-}
-
-header h1 {
-    font-size: 4rem;
-    margin-right: auto;
-    margin-top: 0.5rem;
-    margin-bottom: auto;
-    text-align: left;
-}
-
-header p {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
 }
 
 section {
@@ -90,12 +69,60 @@ section {
     position: relative;
 }
 
+/* Header styling */
+header {
+    margin-top: 5rem;
+    position: absolute;
+    margin-left: auto;
+    align-items: right;
+    right: 2rem;
+    width: 55%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: left;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    position: relative;
+    padding: 2rem;
+}
+
+header p {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.button-container {
+    margin-top: 20px;
+    margin-left: 0px;
+    text-align: left;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3e8e41;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px;
+    margin-left: 0px;
+    margin-right: 20px;
+    text-align: left;
+    font-size: 18px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.button:hover {
+    background-color: #3e8e41;
+}
+
 /* About section styling */
 .about {
-    margin-top: 70px;
+    margin-top: 5rem;
     left: 2rem;
     width: 70%;
-    height: 800px;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -121,6 +148,17 @@ section {
 .about p {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
+}
+
+.featured-projects {
+    width: calc(100% - 8rem);
+    max-width: calc(100% - 8rem);
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 5rem;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    overflow: hidden;
 }
 
 .featured-projects .content {
@@ -162,12 +200,18 @@ section {
     max-width: 100%;
 }
 
+/* Blog Section Styling */
 .blog {
-    margin-top: 50px;
+    left: 2rem;
+    border-radius: 20px;
+    border: 2px solid #fff;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    /* Change flex direction to column */
+    position: relative;
+    width: 70%;
+    margin-top: 5rem;
+    height: auto;
 }
 
 .blog-preview {
@@ -177,7 +221,6 @@ section {
     flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 20px;
-    /* Add margin to create space between the sidebar and previews */
 }
 
 .blog h2 {
@@ -189,20 +232,22 @@ section {
 }
 
 .blog-preview-container {
-    width: 70%;
+    width: calc(100% + 20px);
     display: flex;
     flex-wrap: wrap;
     overflow-y: auto;
     overflow-x: hidden;
     max-width: 100%;
     max-height: 800px;
-    /* adjust max-height as needed */
+    padding-right: 20px;
 }
 
 .blog-preview-card {
     width: 100%;
     display: flex;
     margin-bottom: 30px;
+    border-radius: 20px;
+    border: 2px solid #fff;
 }
 
 .blog-preview-image {
@@ -219,7 +264,7 @@ section {
 }
 
 .blog-preview-info {
-    width: 70%;
+    width: 100%;
 }
 
 .blog-preview-info h3 {
@@ -242,8 +287,12 @@ section {
 }
 
 .blog-preview-sidebar {
-    float: right;
-    width: 28%;
+    position: absolute;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .blog-preview-search {
@@ -308,9 +357,10 @@ section {
 /* Contact section styling */
 .contact {
     margin-top: 5rem;
-    margin: 0 auto;
-    width: 70%;
-    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -348,95 +398,88 @@ section {
 }
 
 .contact form .input-row {
-    display: flex;
-    justify-content: space-between;
     width: 100%;
     margin-bottom: 1rem;
 }
 
 .contact form .input-row .input-group {
-    flex-basis: calc(50% - 5px);
-    /* Adjust the value as needed */
+    width: 100%;
 }
 
 .contact form .input-row .input-group:nth-child(2) {
-    margin-left: 10px;
-    /* Adjust the value as needed */
+    margin-top: 10px;
 }
 
 .contact form .input-group input[type='text'],
 .contact form .input-group input[type='email'] {
-    width: 100%;
+    width: calc(100% - 10px);
     padding: 0.5rem;
     font-size: 1rem;
     border-radius: 5px;
     border: none;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     box-sizing: border-box;
-    /* Add this property */
 }
 
 .contact form textarea {
-    width: calc(100% - 5px);
-    /* Adjust the value as needed */
-    height: 150px;
+    width: calc(100% - 10px);
+    height: 100px;
     padding: 0.5rem;
     font-size: 1rem;
     border-radius: 5px;
     border: none;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     box-sizing: border-box;
-    /* Add this property */
 }
 
-.contact form input[type='submit'] {
-    background-color: #ff6dff;
+.contact form button[type='submit'] {
+    width: 40%;
+    background-color: #3e8e41;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     padding: 0.5rem 1rem;
     font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
 }
 
-.contact form input[type='submit']:hover {
-    background-color: #ff4dd2;
+.contact form button[type='submit']:hover {
+    background-color: #3e8e41;
 }
 
 /* Footer styling */
 footer {
+    position: relative;
+    display: flex;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    height: 60px;
+    z-index: 2;
+}
+
+footer .content {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
-    height: 60px;
+    width: 100%;
 }
 
-footer p {
-    margin: 0;
-    font-size: 1rem;
-}
-
-footer a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.2s ease-in-out;
-}
-
-/*
-footer a:hover {
-/*color: #ff6dff;*/
-/*}
-
-/* Move header and paragraph to the right on desktop */
-/*@media (min-width: 768px) {
-  h1, p {
+footer .left-text {
+    flex: 1;
     text-align: right;
-  }
 }
-*/
+
+footer .right-text {
+    flex: 1;
+    text-align: left;
+}
+
+footer .logo {
+    margin: 0 0.5rem;
+}
 
 /* Responsive design */
 @media (max-width: 768px) {
@@ -450,7 +493,6 @@ footer a:hover {
         display: none;
         margin-left: auto;
         padding-right: 2rem;
-        /* Add left padding */
     }
 
     nav ul li {
@@ -467,21 +509,19 @@ footer a:hover {
     }
 
     /* Header styling */
-
     header {
-        width: 85%;
+        width: 80%;
         height: auto;
-        margin: 2rem;
-        margin-left: 3.5rem;
-        margin-top: 5rem;
+        border-radius: 20px;
+        border: 2px solid #fff;
+        position: relative;
+        right: 50%;
+        transform: translate(+50%, 0%);
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        text-align: left;
-        border-radius: 20px;
-        border: 2px solid #fff;
-        position: relative;
+        padding: 2.5rem;
     }
 
     header h1 {
@@ -490,68 +530,158 @@ footer a:hover {
 
     /* About section styling */
     .about {
-        width: 85%;
-        left: 0rem;
-        margin: 0rem;
-        padding: 2rem;
+        width: 80%;
+        height: auto;
+        border-radius: 20px;
+        border: 2px solid #fff;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2.5rem;
     }
 
     .about h2 {
         font-size: 1.5rem;
     }
 
-    .about {
-        margin-top: 70px;
-        left: 2rem;
-        width: 85%;
-        height: 1300px;
-        display: flex;
-        justify-content: center;
+    .featured-projects {
+        width: 86%;
+        max-width: 86%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5rem;
         border-radius: 20px;
         border: 2px solid #fff;
+        overflow: hidden;
+    }
+
+    .featured-projects .content {
+        overflow-x: auto;
+        white-space: nowrap;
+        font-size: 0;
+        margin-top: 10px;
+        padding-bottom: 20px;
+    }
+
+    .featured-projects h2 {
+        font-size: 2rem;
+        margin-right: auto;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .featured-projects .project {
+        width: calc(100% - 4rem);
+        height: 250px;
+        border-radius: 20px;
+        border: 2px solid #fff;
+        padding: 20px;
+        font-size: 1rem;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .featured-projects .project:hover {
+        transform: scale(1.05);
     }
 
     /* Blog Preview section styling */
     .blog {
+        position: relative;
+        left: 50%;
+        width: 80%;
+        height: auto;
+        transform: translate(-50%, 0%);
+        display: flex;
         flex-direction: column;
-        /* Change flex direction to column for mobile view */
+        justify-content: center;
+        align-items: left;
+        padding: 2.5rem;
     }
 
     .blog-preview-sidebar {
+        position: relative;
         width: 100%;
-        /* Set width to 100% for mobile view */
-        margin-bottom: 20px;
-        /* Add margin to create space between the sidebar and previews */
+        order: -1;
+        padding: 0;
+        margin-top: -50px;
+        left: 0;
     }
 
     .blog-preview-container {
         width: 100%;
-        /* Set width to 100% for mobile view */
+        padding-top: 20px;
+        box-sizing: border-box;
+        padding-right: 20px;
+        height: 200px;
+    }
+
+    .blog-preview-card {
+        width: 100%;
+        display: flex;
+        height: 150px;
+        margin-bottom: 30px;
+        border-radius: 20px;
+        border: 2px solid #fff;
+    }
+
+    .blog-preview-image {
+        width: 30%;
+        height: 200px;
+        overflow: hidden;
+        margin-right: 20px;
+    }
+
+    .blog-preview-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .blog-preview-info {
+        width: 100%;
+    }
+
+    .blog-preview-info h3 {
+        font-size: 1rem;
+        margin-bottom: 1px;
+    }
+
+    .blog-preview-date,
+    .blog-preview-duration,
+    .blog-preview-views {
+        margin-bottom: 10px;
+        font-size: 0.5rem;
+        color: #666;
+    }
+
+    .blog-preview-description {
+        font-size: 0.5rem;
+        line-height: 0.5;
+        margin-bottom: 1px;
     }
 
     .contact {
         width: 90%;
-        /* Adjust width as needed */
         height: auto;
-        /* Adjust height as needed */
         padding: 1rem;
-        /* Adjust padding as needed */
     }
 
     .contact h2 {
         font-size: 1.5rem;
-        /* Adjust font size as needed */
     }
 
     .contact p {
         font-size: 1rem;
-        /* Adjust font size as needed */
     }
 
     .hamburger {
         display: block;
         position: fixed;
-        top: 1.5rem;
+        top: 0.5rem;
         right: 3.5rem;
         cursor: pointer;
         z-index: 2;
