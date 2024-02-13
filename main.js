@@ -139,26 +139,14 @@ document.getElementById("category").addEventListener("change", filterPosts);
 // Contact form
 
 // Pressing contact button goes a little above the contact section
-//document.addEventListener('DOMContentLoaded', function() {
-//  var contactButton = document.querySelector('.nav a[href="#contact"]');
-//  var contactSection = document.getElementById('contact');
-//
-//  contactButton.addEventListener('click', function(event) {
-//    event.preventDefault();
-//    contactSection.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-//  });
-//});
-
 document.addEventListener('DOMContentLoaded', function() {
-  var contactButton = document.querySelector('.nav a[href="#contact"]');
-  var contactSection = document.getElementById('contact');
-  var navHeight = document.querySelector('nav').offsetHeight;
-
-  contactButton.addEventListener('click', function(event) {
-    event.preventDefault();
-    var offset = contactSection.offsetTop - navHeight;
+  document.querySelector('.contact-btn').addEventListener('click', function() {
+    const contactSection = document.querySelector('.contact');
+    const navbarHeight = document.querySelector('nav').offsetHeight;
+    const offset = navbarHeight + 20;
+    const contactSectionPosition = contactSection.offsetTop - offset;
     window.scrollTo({
-      top: offset,
+      top: contactSectionPosition,
       behavior: 'smooth'
     });
   });
