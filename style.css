@@ -289,10 +289,16 @@ header p {
 .blog-preview-sidebar {
     position: absolute;
     top: 0;
-    right: -250px;
-    width: 250px;
+    right: -300px;
+    width: 300px;
     padding: 20px;
     box-sizing: border-box;
+}
+
+.blog-preview-sidebar select,
+.blog-preview-sidebar input[type='text'] {
+    margin-bottom: 8px;
+    width: calc(100% - 10px);
 }
 
 .blog-preview-search {
@@ -335,6 +341,7 @@ header p {
 
 .tag-button {
     border: none;
+    margin-top: 8px;
     border-radius: 16px;
     padding: 6px 12px;
     background-color: #eee;
@@ -423,7 +430,7 @@ header p {
 
 .contact form textarea {
     width: calc(100% - 10px);
-    height: 100px;
+    height: 150px;
     padding: 0.5rem;
     font-size: 1rem;
     border-radius: 5px;
@@ -508,9 +515,14 @@ footer .logo {
         display: flex;
     }
 
+    section {
+        width: calc(100% - 40px);
+        margin: 20px auto;
+    }
+
     /* Header styling */
     header {
-        width: 80%;
+        width: calc(100% - 80px);
         height: auto;
         border-radius: 20px;
         border: 2px solid #fff;
@@ -528,9 +540,29 @@ footer .logo {
         font-size: 2.5rem;
     }
 
+    .button-container {
+        margin-top: 20px;
+        margin-left: 0px;
+        text-align: left;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #3e8e41;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 20px;
+        margin-left: 0px;
+        margin-right: 10px;
+        text-align: left;
+        font-size: 18px;
+        transition: background-color 0.3s ease-in-out;
+    }
+
     /* About section styling */
     .about {
-        width: 80%;
+        width: calc(100% - 80px);
         height: auto;
         border-radius: 20px;
         border: 2px solid #fff;
@@ -549,10 +581,10 @@ footer .logo {
     }
 
     .featured-projects {
-        width: 86%;
-        max-width: 86%;
-        margin-left: auto;
-        margin-right: auto;
+        width: calc(100% - 50px);
+        max-width: calc(100% - 50px);
+        margin: 20px auto;
+        margin-right: 8rem;
         margin-top: 5rem;
         border-radius: 20px;
         border: 2px solid #fff;
@@ -575,13 +607,17 @@ footer .logo {
     }
 
     .featured-projects .project {
-        width: calc(100% - 4rem);
-        height: 250px;
+        height: 350px;
         border-radius: 20px;
         border: 2px solid #fff;
         padding: 20px;
         font-size: 1rem;
         transition: transform 0.3s ease-in-out;
+    }
+
+    .featured-projects .project img {
+        aspect-ratio: 16 / 9;
+        max-width: auto;
     }
 
     .featured-projects .project:hover {
@@ -592,7 +628,7 @@ footer .logo {
     .blog {
         position: relative;
         left: 50%;
-        width: 80%;
+        width: calc(100% - 80px);
         height: auto;
         transform: translate(-50%, 0%);
         display: flex;
@@ -613,10 +649,10 @@ footer .logo {
 
     .blog-preview-container {
         width: 100%;
-        padding-top: 20px;
+        padding-top: 10px;
         box-sizing: border-box;
         padding-right: 20px;
-        height: 200px;
+        height: 600px;
     }
 
     .blog-preview-card {
@@ -632,7 +668,7 @@ footer .logo {
         width: 30%;
         height: 200px;
         overflow: hidden;
-        margin-right: 20px;
+        margin-right: 40px;
     }
 
     .blog-preview-image img {
@@ -665,9 +701,8 @@ footer .logo {
     }
 
     .contact {
-        width: 90%;
+        width: calc(100% - 65px);
         height: auto;
-        padding: 1rem;
     }
 
     .contact h2 {
