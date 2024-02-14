@@ -7,6 +7,26 @@ body {
     overflow-x: hidden;
 }
 
+/* Styling for the logo */
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.logo img {
+    background-image: url('.face');
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 0.5rem;
+}
+
 .content-wrapper {
     width: 90%;
     max-width: 1200px;
@@ -88,8 +108,14 @@ header {
     padding: 2rem;
 }
 
-header p {
+.header h2 {
+    font-size: 1.8rem;
+    margin-right: auto;
     margin-top: 0.5rem;
+}
+
+header p {
+    margin-top: 1rem;
     font-size: 1.2rem;
 }
 
@@ -106,6 +132,7 @@ header p {
     color: #fff;
     text-decoration: none;
     border-radius: 20px;
+    flex-direction: row;
     margin-left: 0px;
     margin-right: 20px;
     text-align: left;
@@ -139,7 +166,7 @@ header p {
 }
 
 .about h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-right: auto;
     margin-top: 0.5rem;
     margin-bottom: auto;
@@ -170,7 +197,7 @@ header p {
 }
 
 .featured-projects h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-right: auto;
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -209,14 +236,14 @@ header p {
     flex-wrap: wrap;
     flex-direction: column;
     position: relative;
-    width: 70%;
+    width: 65%;
     margin-top: 5rem;
     height: auto;
 }
 
 .blog-preview {
     width: 100%;
-    margin-top: 50px;
+    margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -224,15 +251,11 @@ header p {
 }
 
 .blog h2 {
-    font-size: 2rem;
-}
-
-.blog-preview h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 .blog-preview-container {
-    width: calc(100% + 20px);
+    width: calc(100% + 30px);
     display: flex;
     flex-wrap: wrap;
     overflow-y: auto;
@@ -243,7 +266,7 @@ header p {
 }
 
 .blog-preview-card {
-    width: 100%;
+    width: 95%;
     display: flex;
     margin-bottom: 30px;
     border-radius: 20px;
@@ -298,20 +321,19 @@ header p {
 .blog-preview-sidebar select,
 .blog-preview-sidebar input[type='text'] {
     margin-bottom: 8px;
-    width: calc(100% - 10px);
+    width: calc(100% - 50px);
 }
 
 .blog-preview-search {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    width: calc(100% - 20px);
 }
 
 .blog-preview-search input[type='text'] {
     padding: 0.5rem;
     border-radius: 0.25rem;
     border: 1px solid #ccc;
-    margin-right: 0.5rem;
 }
 
 .blog-preview-search button {
@@ -334,9 +356,14 @@ header p {
 }
 
 .tag-container {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     gap: 10px;
+}
+
+.tag-container.show-tags {
+    display: flex;
+    left: 0;
 }
 
 .tag-button {
@@ -369,7 +396,7 @@ header p {
     width: 50%;
     height: auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
@@ -388,7 +415,7 @@ header p {
 }
 
 .contact h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin: 0;
 }
 
@@ -440,7 +467,7 @@ header p {
 }
 
 .contact form button[type='submit'] {
-    width: 40%;
+    width: auto;
     background-color: #3e8e41;
     color: #fff;
     border: none;
@@ -484,22 +511,37 @@ footer .right-text {
     text-align: left;
 }
 
-footer .logo {
+footer .symbol {
     margin: 0 0.5rem;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem;
+        position: fixed;
+        top: 0;
+        width: 99%;
+        height: 1.5rem;
+        z-index: 1;
+        background-color: transparent;
+        backdrop-filter: blur(10px);
+    }
+
     nav ul {
         flex-direction: column;
         position: absolute;
-        top: 4rem;
+        top: 2.5rem;
         left: 0;
-        width: 99%;
-        background-color: #000;
+        width: auto;
         display: none;
         margin-left: auto;
         padding-right: 2rem;
+        background-color: transparent;
+        backdrop-filter: blur(10px);
     }
 
     nav ul li {
@@ -536,12 +578,18 @@ footer .logo {
         padding: 2.5rem;
     }
 
-    header h1 {
-        font-size: 2.5rem;
+    .header h2 {
+        font-size: 1.5rem;
+    }
+
+    .header p {
+        font-size: 1rem;
+        text-rendering: optimizeLegibility;
+        hyphens: auto;
     }
 
     .button-container {
-        margin-top: 20px;
+        margin-top: 30px;
         margin-left: 0px;
         text-align: left;
     }
@@ -554,7 +602,7 @@ footer .logo {
         text-decoration: none;
         border-radius: 20px;
         margin-left: 0px;
-        margin-right: 10px;
+        margin-right: 20px;
         text-align: left;
         font-size: 18px;
         transition: background-color 0.3s ease-in-out;
@@ -580,6 +628,12 @@ footer .logo {
         font-size: 1.5rem;
     }
 
+    .about p {
+        font-size: 1rem;
+        text-rendering: optimizeLegibility;
+        hyphens: auto;
+    }
+
     .featured-projects {
         width: calc(100% - 50px);
         max-width: calc(100% - 50px);
@@ -600,7 +654,7 @@ footer .logo {
     }
 
     .featured-projects h2 {
-        font-size: 2rem;
+        font-size: 1.5rem;
         margin-right: auto;
         margin-top: 2rem;
         margin-bottom: 2rem;
@@ -638,27 +692,31 @@ footer .logo {
         padding: 2.5rem;
     }
 
+    .blog h2 {
+        font-size: 1.5rem;
+    }
+
     .blog-preview-sidebar {
         position: relative;
         width: 100%;
         order: -1;
         padding: 0;
-        margin-top: -50px;
         left: 0;
+        margin-bottom: 1rem;
     }
 
     .blog-preview-container {
         width: 100%;
         padding-top: 10px;
         box-sizing: border-box;
-        padding-right: 20px;
-        height: 600px;
+        padding-right: 10px;
+        height: 400px;
     }
 
     .blog-preview-card {
         width: 100%;
         display: flex;
-        height: 150px;
+        height: 120px;
         margin-bottom: 30px;
         border-radius: 20px;
         border: 2px solid #fff;
@@ -668,34 +726,36 @@ footer .logo {
         width: 30%;
         height: 200px;
         overflow: hidden;
-        margin-right: 40px;
+        margin-right: 10px;
     }
 
     .blog-preview-image img {
-        width: 100%;
-        height: 100%;
+        width: auto;
+        height: auto;
         object-fit: cover;
     }
 
     .blog-preview-info {
         width: 100%;
+        height: auto;
     }
 
     .blog-preview-info h3 {
-        font-size: 1rem;
-        margin-bottom: 1px;
+        font-size: 0.8rem;
+        margin-bottom: 0.5px;
+        margin-top: 0.5rem;
     }
 
     .blog-preview-date,
     .blog-preview-duration,
     .blog-preview-views {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         font-size: 0.5rem;
         color: #666;
     }
 
     .blog-preview-description {
-        font-size: 0.5rem;
+        font-size: 0.6rem;
         line-height: 0.5;
         margin-bottom: 1px;
     }
