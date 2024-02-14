@@ -92,6 +92,34 @@ const filter = () => {
 document.getElementById("category").addEventListener("change", filter);
 document.getElementById("sort").addEventListener("change", filter);
 
+// Blog toggle visibility of tags based on selected option
+const toggleTags = () => {
+  const selectedOption = document.getElementById("toggle-tags").value;
+  const tagContainer = document.querySelector(".tag-container");
+  if (selectedOption === "show") {
+    tagContainer.classList.add("show-tags");
+  } else {
+    tagContainer.classList.remove("show-tags");
+  }
+};
+
+// Event listener for when the selection changes
+document.getElementById("toggle-tags").addEventListener("change", toggleTags);
+
+// Function to set the initial option on page load
+const setInitialOption = () => {
+  const toggleTagsSelect = document.getElementById("toggle-tags");
+  if (window.innerWidth <= 768) { // For mobile view
+    toggleTagsSelect.value = "hide";
+    toggleTags();
+  } else {
+    toggleTags();
+  }
+};
+
+// Call the function to set initial option on page load
+window.addEventListener("load", setInitialOption);
+
 // Blog filtering by tag selection
 
 const tags = document.querySelectorAll(".tag-button");
