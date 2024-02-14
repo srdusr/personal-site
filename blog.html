@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href=".face" type="image/png" />
     <title>srdusr</title>
     <link rel="stylesheet" href="style.css" />
 </head>
@@ -11,9 +12,13 @@
 <nav>
     <div class="logo">
         <h1>
-            <a href="index.html"><img src="logo.png" alt="srdusr" /></a>
+            <a href="index.html" class="logo">
+                <img src=".face" alt="Logo" />
+                <span class="logo-text">srdusr</span>
+            </a>
         </h1>
     </div>
+
     <div class="hamburger">
         <span></span>
         <span></span>
@@ -28,99 +33,111 @@
 <div class="content-wrapper">
     <section class="blog" id="blog">
         <h2>Blog Posts</h2>
-        <div class="blog-preview">
-            <div class="blog-preview-container">
-                <div class="blog-preview-card" data-tags="Python JavaScript" data-category="web">
-                    <div class="blog-preview-image">
-                        <img src="blog1.jpg" alt="Web Development Blog Post" />
+        <div class="content">
+            <div class="blog-preview">
+                <div class="blog-preview-container">
+                    <div class="blog-preview-card" data-tags="Python JavaScript" data-category="web">
+                        <div class="blog-preview-image">
+                            <img src="blog1.jpg" alt="Web Development Blog Post" />
+                        </div>
+                        <div class="blog-preview-info">
+                            <h3>
+                                <a href="#">Web development using Javascript and Python</a>
+                            </h3>
+                            <p class="blog-preview-date">March 25, 2023</p>
+                            <p class="blog-preview-duration">10 min read</p>
+                            <p class="blog-preview-views">1,234 views</p>
+                            <p class="blog-preview-description">
+                                Learn how to code in Javascript/Python for web.
+                            </p>
+                        </div>
                     </div>
-                    <div class="blog-preview-info">
-                        <h3>
-                            <a href="#">Web development using Javascript and Python</a>
-                        </h3>
-                        <p class="blog-preview-date">March 25, 2023</p>
-                        <p class="blog-preview-duration">10 min read</p>
-                        <p class="blog-preview-views">1,234 views</p>
-                        <p class="blog-preview-description">
-                            Learn how to code in Javascript/Python for web.
-                        </p>
+                    <div class="blog-preview-card" data-tags="Python" data-category="ai">
+                        <div class="blog-preview-image">
+                            <img src="blog2.jpg" alt="AI Blog Post" />
+                        </div>
+                        <div class="blog-preview-info">
+                            <h3><a href="#">Will AI take over the world?</a></h3>
+                            <p class="blog-preview-date">March 20, 2023</p>
+                            <p class="blog-preview-duration">5 min read</p>
+                            <p class="blog-preview-views">567 views</p>
+                            <p class="blog-preview-description">
+                                Are computers smarter than us.
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-preview-card" data-tags="Python" data-category="ai">
-                    <div class="blog-preview-image">
-                        <img src="blog2.jpg" alt="AI Blog Post" />
+                    <div class="blog-preview-card" data-tags="Kotlin" data-category="mobile">
+                        <div class="blog-preview-image">
+                            <img src="blog3.jpg" alt="Mobile Development Blog Post" />
+                        </div>
+                        <div class="blog-preview-info">
+                            <h3><a href="#">Building mobile apps with Kotlin</a></h3>
+                            <p class="blog-preview-date">March 15, 2023</p>
+                            <p class="blog-preview-duration">8 min read</p>
+                            <p class="blog-preview-views">789 views</p>
+                            <p class="blog-preview-description">
+                                Learn how to use Kotlin to build mobile apps.
+                            </p>
+                        </div>
                     </div>
-                    <div class="blog-preview-info">
-                        <h3><a href="#">Will AI take over the world?</a></h3>
-                        <p class="blog-preview-date">March 20, 2023</p>
-                        <p class="blog-preview-duration">5 min read</p>
-                        <p class="blog-preview-views">567 views</p>
-                        <p class="blog-preview-description">
-                            Are computers smarter than us.
-                        </p>
+                    <div class="blog-preview-card" data-tags="Figma" data-category="design">
+                        <div class="blog-preview-image">
+                            <img src="blog4.jpg" alt="Design Blog Post" />
+                        </div>
+                        <div class="blog-preview-info">
+                            <h3><a href="#">Designing user interfaces with Figma</a></h3>
+                            <p class="blog-preview-date">March 10, 2023</p>
+                            <p class="blog-preview-duration">7 min read</p>
+                            <p class="blog-preview-views">890 views</p>
+                            <p class="blog-preview-description">
+                                Create stunning user interfaces with Figma.
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-preview-card" data-tags="Kotlin" data-category="mobile">
-                    <div class="blog-preview-image">
-                        <img src="blog3.jpg" alt="Mobile Development Blog Post" />
-                    </div>
-                    <div class="blog-preview-info">
-                        <h3><a href="#">Building mobile apps with Kotlin</a></h3>
-                        <p class="blog-preview-date">March 15, 2023</p>
-                        <p class="blog-preview-duration">8 min read</p>
-                        <p class="blog-preview-views">789 views</p>
-                        <p class="blog-preview-description">
-                            Learn how to use Kotlin to build mobile apps.
-                        </p>
-                    </div>
-                </div>
-                <div class="blog-preview-card" data-tags="Figma" data-category="design">
-                    <div class="blog-preview-image">
-                        <img src="blog4.jpg" alt="Design Blog Post" />
-                    </div>
-                    <div class="blog-preview-info">
-                        <h3><a href="#">Designing user interfaces with Figma</a></h3>
-                        <p class="blog-preview-date">March 10, 2023</p>
-                        <p class="blog-preview-duration">7 min read</p>
-                        <p class="blog-preview-views">890 views</p>
-                        <p class="blog-preview-description">
-                            Create stunning user interfaces with Figma.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="blog-preview-sidebar">
-                <form>
-                    <label for="category">Category:</label>
-                    <select id="category" name="category">
-                        <option value="all">All</option>
-                        <option value="web">Web Development</option>
-                        <option value="mobile">Mobile Development</option>
-                        <option value="ai">Artificial Intelligence</option>
-                        <option value="design">Design</option>
-                    </select>
-                </form>
-
-                <form>
-                    <label for="sort">Sort by:</label>
-                    <select id="sort" class="blog-preview-sort" name="sort">
-                        <option value="recent" selected>Most Recent</option>
-                        <option value="popular">Most Popular</option>
-                    </select>
-                </form>
-
-                <label for="search">Search:</label>
-                <div class="blog-preview-search">
-                    <input type="text" id="search-item" name="search" placeholder="Search..." onkeyup="search()" />
                 </div>
 
-                <label for="tags">Tags:</label>
-                <div class="tag-container">
-                    <button class="tag-button" data-tag="Python">Python</button>
-                    <button class="tag-button" data-tag="JavaScript">JavaScript</button>
-                    <button class="tag-button" data-tag="Kotlin">Kotlin</button>
-                    <button class="tag-button" data-tag="Figma">Figma</button>
+                <div class="blog-preview-sidebar">
+                    <form>
+                        <label for="search">Search:</label>
+                        <div class="blog-preview-search">
+                            <input type="text" id="search-item" name="search" placeholder="Search..."
+                                onkeyup="search()" />
+                        </div>
+
+                        <label for="category">Category:</label>
+                        <select id="category" name="category">
+                            <option value="all">All</option>
+                            <option value="web">Web Development</option>
+                            <option value="mobile">Mobile Development</option>
+                            <option value="ai">Artificial Intelligence</option>
+                            <option value="design">Design</option>
+                        </select>
+                    </form>
+
+                    <form>
+                        <label for="sort">Sort by:</label>
+                        <select id="sort" class="blog-preview-sort" name="sort">
+                            <option value="recent" selected>Most Recent</option>
+                            <option value="popular">Most Popular</option>
+                        </select>
+                    </form>
+
+                    <form>
+                        <label for="toggle-tags">Tags:<br /></label>
+                        <select id="toggle-tags" name="toggle-tags">
+                            <option value="show">Show</option>
+                            <option value="hide">Hide</option>
+                        </select>
+                    </form>
+
+                    <div class="tag-container">
+                        <button class="tag-button" data-tag="Python">Python</button>
+                        <button class="tag-button" data-tag="JavaScript">
+                            JavaScript
+                        </button>
+                        <button class="tag-button" data-tag="Kotlin">Kotlin</button>
+                        <button class="tag-button" data-tag="Figma">Figma</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -130,7 +147,7 @@
 <footer>
     <div class="content">
         <span class="left-text">&copy; 2024 srdusr</span>
-        <span class="logo">|</span>
+        <span class="symbol">|</span>
         <span class="right-text">Trevor Gray</span>
     </div>
 </footer>
