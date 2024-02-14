@@ -126,13 +126,11 @@ header p {
 }
 
 .button {
-    display: inline-block;
     padding: 10px 20px;
     background-color: #3e8e41;
     color: #fff;
     text-decoration: none;
     border-radius: 20px;
-    flex-direction: row;
     margin-left: 0px;
     margin-right: 20px;
     text-align: left;
@@ -316,6 +314,7 @@ header p {
     width: 300px;
     padding: 20px;
     box-sizing: border-box;
+    margin-right: auto;
 }
 
 .blog-preview-sidebar select,
@@ -531,6 +530,12 @@ footer .symbol {
         backdrop-filter: blur(10px);
     }
 
+    nav h1 {
+        font-size: 1rem;
+        margin: 0;
+        margin-left: 0rem;
+    }
+
     nav ul {
         flex-direction: column;
         position: absolute;
@@ -540,8 +545,7 @@ footer .symbol {
         display: none;
         margin-left: auto;
         padding-right: 2rem;
-        background-color: transparent;
-        backdrop-filter: blur(10px);
+        background-color: #000;
     }
 
     nav ul li {
@@ -592,20 +596,15 @@ footer .symbol {
         margin-top: 30px;
         margin-left: 0px;
         text-align: left;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        align-items: center;
     }
 
     .button {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #3e8e41;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 20px;
-        margin-left: 0px;
-        margin-right: 20px;
-        text-align: left;
-        font-size: 18px;
-        transition: background-color 0.3s ease-in-out;
+        margin: 0 10px 10px 0;
     }
 
     /* About section styling */
@@ -726,7 +725,7 @@ footer .symbol {
         width: 30%;
         height: 200px;
         overflow: hidden;
-        margin-right: 10px;
+        margin-right: 20px;
     }
 
     .blog-preview-image img {
@@ -755,7 +754,7 @@ footer .symbol {
     }
 
     .blog-preview-description {
-        font-size: 0.6rem;
+        font-size: 0.4rem;
         line-height: 0.5;
         margin-bottom: 1px;
     }
@@ -777,7 +776,7 @@ footer .symbol {
         display: block;
         position: fixed;
         top: 0.5rem;
-        right: 3.5rem;
+        right: 2.5rem;
         cursor: pointer;
         z-index: 2;
     }
