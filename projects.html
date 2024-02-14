@@ -4,67 +4,70 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href=".face" type="image/png" />
     <title>srdusr</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="projects">
-    <nav>
-        <div class="logo">
-            <h1>
-                <a href="index.html"><img src="logo.png" alt="srdusr" /></a>
-            </h1>
-        </div>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-
-    <div class="content-wrapper">
-        <section class="featured-projects" id="featured-projects">
-            <h2>Featured Projects</h2>
-            <div class="content">
-                <p>Here are some of the projects I have worked on:</p>
-                <div class="project">
-                    <p>Typerpunk, a rust based cli/tui typing game</p>
-                    <a href="https://github.com/srdusr/typerpunk">
-                        <img src="typerpunk.jpg" alt="Typerpunk Project" />
-                    </a>
-                </div>
-                <div class="project">
-                    <p>
-                        Eva (Efficiency Virtual Assistant), a python based cli/tui sysinfo
-                        analysis
-                    </p>
-                    <a href="https://github.com/srdusr/eva">
-                        <img src="eva.jpg" alt="Eva Project" />
-                    </a>
-                </div>
-                <div class="project">
-                    <p>Cerberus, a C based cli/tui password manager</p>
-                    <a href="https://github.com/srdusr/cerberus">
-                        <img src="cerberus.jpg" alt="Cerberus Project" />
-                    </a>
-                </div>
-            </div>
-        </section>
+<nav>
+    <div class="logo">
+        <h1>
+            <a href="index.html" class="logo">
+                <img src=".face" alt="Logo" />
+                <span class="logo-text">srdusr</span>
+            </a>
+        </h1>
     </div>
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <ul>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
 
-    <footer>
+<div class="content-wrapper">
+    <section class="featured-projects" id="featured-projects">
+        <h2>Featured Projects</h2>
         <div class="content">
-            <span class="left-text">&copy; 2024 srdusr</span>
-            <span class="logo">|</span>
-            <span class="right-text">Trevor Gray</span>
+            <p>Here are some of the projects I have worked on:</p>
+            <div class="project">
+                <p>Typerpunk, a rust based cli/tui typing game</p>
+                <a href="https://github.com/srdusr/typerpunk">
+                    <img src="typerpunk.jpg" alt="Typerpunk Project" />
+                </a>
+            </div>
+            <div class="project">
+                <p>
+                    Eva (Efficiency Virtual Assistant), a python based cli/tui sysinfo
+                    analysis
+                </p>
+                <a href="https://github.com/srdusr/eva">
+                    <img src="eva.jpg" alt="Eva Project" />
+                </a>
+            </div>
+            <div class="project">
+                <p>Cerberus, a C based cli/tui password manager</p>
+                <a href="https://github.com/srdusr/cerberus">
+                    <img src="cerberus.jpg" alt="Cerberus Project" />
+                </a>
+            </div>
         </div>
-    </footer>
-    <script src="main.js"></script>
+    </section>
+</div>
+
+<footer>
+    <div class="content">
+        <span class="left-text">&copy; 2024 srdusr</span>
+        <span class="symbol">|</span>
+        <span class="right-text">Trevor Gray</span>
+    </div>
+</footer>
+<script src="main.js"></script>
 </body>
 
 </html>
