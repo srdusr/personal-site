@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href=".face" type="image/png" />
     <title>srdusr</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
@@ -13,7 +14,10 @@
     <nav>
         <div class="logo">
             <h1>
-                <a href="index.html"><img src="logo.png" alt="srdusr" /></a>
+                <a href="index.html" class="logo">
+                    <img src=".face" alt="Logo" />
+                    <span class="logo-text">srdusr</span>
+                </a>
             </h1>
         </div>
         <div class="hamburger">
@@ -27,6 +31,7 @@
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
+
     <div class="content-wrapper">
         <header class="header" id="header">
             <div class="content">
@@ -35,14 +40,14 @@
                     Hi there, I'm <strong>srdusr</strong>, a self-taught IT Specialist
                     from South Africa with a passion for software development, sysadmin,
                     networking, and infosec. I spend my free time refining my skills,
-                    exploring new technologies in my personal homelab and sharing my
-                    insights in my blog. When not coding, you can find me optimizing my
-                    workflow or practicing modern-day fencing (the one with swords in
-                    it).
+                    exploring new technologies in my personal homelab and sharing some
+                    of my insights in my blog. When not coding, you can find me
+                    optimizing my workflow or practicing modern-day fencing (the one
+                    with swords in it).
                 </p>
                 <p>
-                    Interested in learning more about me or discussing potential
-                    projects? Feel free to get in touch!
+                    If you're interested in learning more about me or discussing
+                    potential projects? Feel free to get in touch!
                 </p>
                 <div class="button-container">
                     <a href="resume.pdf" class="button"><i class="fas fa-file-pdf"></i> Resume</a>
@@ -58,7 +63,7 @@
                     <span style="font-weight: bold">srdusr</span><br />
                     (noun/alias) • /ˈsərdəzər/ <br />
                     • A combination of the words "sword" and "user", shortened for
-                    convenience and styled in the fashion of Linux commands. <br />
+                    convenience and styled in the fashion of unix commands. <br />
                     • Example: Srdusr, akin to a command-line ninja, slashes through
                     technical challenges with the agility and precision of a well-honed
                     blade...
@@ -96,9 +101,8 @@
         </section>
 
         <section class="featured-projects" id="featured-projects">
+            <h2>Featured Projects</h2>
             <div class="content">
-                <h2>Featured Projects</h2>
-                <p>Here are some of the projects I have worked on:</p>
                 <div class="project">
                     <p>Typerpunk, a rust based cli/tui typing game</p>
                     <a href="https://github.com/srdusr/typerpunk">
@@ -190,6 +194,12 @@
 
                     <div class="blog-preview-sidebar">
                         <form>
+                            <label for="search">Search:</label>
+                            <div class="blog-preview-search">
+                                <input type="text" id="search-item" name="search" placeholder="Search..."
+                                    onkeyup="search()" />
+                            </div>
+
                             <label for="category">Category:</label>
                             <select id="category" name="category">
                                 <option value="all">All</option>
@@ -208,13 +218,14 @@
                             </select>
                         </form>
 
-                        <label for="search">Search:</label>
-                        <div class="blog-preview-search">
-                            <input type="text" id="search-item" name="search" placeholder="Search..."
-                                onkeyup="search()" />
-                        </div>
+                        <form>
+                            <label for="toggle-tags">Tags:<br /></label>
+                            <select id="toggle-tags" name="toggle-tags">
+                                <option value="show">Show</option>
+                                <option value="hide">Hide</option>
+                            </select>
+                        </form>
 
-                        <label for="tags">Tags:</label>
                         <div class="tag-container">
                             <button class="tag-button" data-tag="Python">Python</button>
                             <button class="tag-button" data-tag="JavaScript">
@@ -259,7 +270,7 @@
     <footer>
         <div class="content">
             <span class="left-text">&copy; 2024 srdusr</span>
-            <span class="logo">|</span>
+            <span class="symbol">|</span>
             <span class="right-text">Trevor Gray</span>
         </div>
     </footer>
