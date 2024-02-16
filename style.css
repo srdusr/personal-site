@@ -80,8 +80,6 @@ nav ul li a:hover {
 .content-wrapper {
     min-height: calc(100vh - 60px);
     padding-bottom: 60px;
-    display: flex;
-    flex-direction: column;
 }
 
 section {
@@ -540,23 +538,32 @@ footer .symbol {
         flex-direction: column;
         position: absolute;
         top: 2.6rem;
-        left: 0;
+        right: 2rem;
         width: auto;
+        height: auto;
         display: none;
         margin-left: auto;
         padding-right: 2rem;
         background-color: transparent;
         backdrop-filter: blur(10px);
         border-radius: 20px;
+        border: 1px solid #fff;
+        /* Border color */
     }
 
     nav ul li {
         margin-left: 2rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
     }
 
     nav ul li a {
         font-size: 1.5rem;
+    }
+
+    nav ul li a:hover {
+        color: #004286;
+        /* Hover color */
     }
 
     nav ul.show {
