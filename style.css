@@ -7,7 +7,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Styling for the logo */
+/* Logo Styling */
 .logo {
     display: flex;
     flex-direction: row;
@@ -544,11 +544,11 @@ footer .symbol {
         display: none;
         margin-left: auto;
         padding-right: 2rem;
-        background-color: transparent;
         backdrop-filter: blur(10px);
         border-radius: 20px;
         border: 1px solid #fff;
-        /* Border color */
+        background-color: rgba(0, 0, 0, 0.5);
+        /* background-color: transparent; */
     }
 
     nav ul li {
@@ -563,7 +563,6 @@ footer .symbol {
 
     nav ul li a:hover {
         color: #004286;
-        /* Hover color */
     }
 
     nav ul.show {
