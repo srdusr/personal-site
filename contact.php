@@ -41,7 +41,9 @@ if (isset($_POST['name'])) {
 
         // Attempt to send the email
         $mail->send();
-        echo 'Message has been sent';
+
+         // Echo 'success' if the email was sent successfully
+         echo 'success';
     } catch (Exception $e) {
         // An error occurred. Display the error message
         echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
