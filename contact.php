@@ -20,8 +20,8 @@ if (isset($_POST['submit'])) {
         $mail->isSMTP(); // Set mailer to use SMTP
         $mail->Host = '127.0.0.1'; // Specify main and backup SMTP servers
         $mail->SMTPAuth = true; // Enable SMTP authentication
-        $mail->Username = '$SMTP_USERNAME'; // SMTP username
-        $mail->Password = '$SMTP_PASSWORD'; // SMTP password
+        $mail->Username = $_ENV['SMTP_USERNAME']; // Use SMTP username from environment variable
+         $mail->Password = $_ENV['SMTP_PASSWORD']; // Use SMTP password from environment variable
         $mail->SMTPSecure = 'tls'; // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 1025; // TCP port to connect to
 
