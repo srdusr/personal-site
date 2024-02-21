@@ -1,65 +1,44 @@
 <?php
-error_reporting(E_ALL);
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get form data
+// Include the PHPMailer autoload file
+require 'vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// Check if the form is submitted
+if (isset($_POST['submit'])) {
+    // Retrieve form data
     $name = $_POST['name'];
-    $email = $_POST['email'];
+    $mailFrom = $_POST['mail'];
     $message = $_POST['message'];
 
-    // Validate input
-    if (empty($name) || empty($email) || empty($message)) {
-        logError('Incomplete form data');
-        echo 'error';
-        exit; // Stop script execution
+    // Create a new PHPMailer instance
+    $mail = new PHPMailer(true); // Passing `true` enables exceptions
+
+    try {
+        // Server settings
+        $mail->isSMTP(); // Set mailer to use SMTP
+        $mail->Host = 'localhost'; // Specify main and backup SMTP servers
+        $mail->SMTPAuth = false; // Enable SMTP authentication
+        $mail->SMTPAutoTLS = false; // Disable TLS encryption
+        $mail->Port = 25; // TCP port to connect to
+
+        // Recipients
+        $mail->setFrom($mailFrom, $name);
+        $mail->addAddress('trevorgray@srdusr.com'); // Add a recipient
+
+        // Content
+        $mail->isHTML(false); // Set email format to plain text
+        $mail->Subject = 'Email from srdusr.com';
+        $mail->Body = "You have received an e-mail from $name.\n\n$message";
+
+        // Send the email
+        $mail->send();
+        header("Location: index.php?mailsend");
+        exit();
+    } catch (Exception $e) {
+        // Handle exceptions
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
-
-    // Validate email format
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        logError('Invalid email format');
-        echo 'error';
-        exit; // Stop script execution
-    }
-
-    // Sanitize input
-    $name = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
-    $email = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
-    $message = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
-
-    // Validate and sanitize headers
-    $name = filter_var($name, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-
-    // Set the recipient email address
-    $to = 'trevorgray@srdusr.com';
-
-    // Set the email subject
-    $subject = 'New Contact Form Submission';
-
-    // Set the email headers
-    $headers = "From: " . $name . " <" . $email . ">" . "\r\n";
-    $headers .= "Reply-To: " . $email . "\r\n";
-    $headers .= "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type: text/html; charset=utf-8" . "\r\n";
-
-    // Compose the email body
-    $body = "
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> $name</p>
-        <p><strong>Email:</strong> $email</p>
-        <p><strong>Message:</strong> $message</p>
-    ";
-
-    // Send the email
-    if (mail($to, $subject, $body, $headers)) {
-        echo 'success'; // Send a response back to main.js
-    } else {
-        logError('Failed to send email');
-        echo 'error';
-    }
-}
-
-function logError($message) {
-    // Log the error message to a file or error log
-    error_log('Contact form error: ' . $message, 0);
 }
 ?>
