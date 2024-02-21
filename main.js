@@ -167,96 +167,83 @@ document.getElementById("category").addEventListener("change", filterPosts);
 // Contact form
 
 // Pressing contact button goes a little above the contact section
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelector('.contact-btn').addEventListener('click', function() {
-    const contactSection = document.querySelector('.contact');
-    const navbarHeight = document.querySelector('nav').offsetHeight;
-    const offset = navbarHeight - 20;
-    const contactSectionPosition = contactSection.offsetTop - offset;
-    window.scrollTo({
-      top: contactSectionPosition,
-      behavior: 'smooth'
-    });
-  });
-});
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', handleSubmit);
 
-// Get form element and add submit event listener
-const form = document.getElementById('contact-form');
-form.addEventListener('submit', handleSubmit);
+  // Handle form submission
+  function handleSubmit(event) {
+    event.preventDefault(); // Prevent the form from submitting
 
-// Handle form submission
-function handleSubmit(event) {
-  event.preventDefault(); // Prevent the form from submitting
+    // Validate the form
+    if (validateForm()) {
+      // If the form is valid, send the data
+      sendForm();
+    }
+  }
 
   // Validate the form
-  if (validateForm()) {
-    // If the form is valid, send the data
-    sendForm();
-  }
-}
+  function validateForm() {
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
 
-// Validate the form
-function validateForm() {
-  const nameInput = document.getElementById('name');
-  const emailInput = document.getElementById('email');
-  const messageInput = document.getElementById('message');
+    // Validation
+    if (nameInput.value.trim() === '') {
+      alert('Please enter your name.');
+      nameInput.focus();
+      return false;
+    }
 
-  // Validation
-  if (nameInput.value.trim() === '') {
-    alert('Please enter your name.');
-    nameInput.focus();
-    return false;
-  }
+    if (emailInput.value.trim() === '') {
+      alert('Please enter your email.');
+      emailInput.focus();
+      return false;
+    }
 
-  if (emailInput.value.trim() === '') {
-    alert('Please enter your email.');
-    emailInput.focus();
-    return false;
-  }
+    if (messageInput.value.trim() === '') {
+      alert('Please enter your message.');
+      messageInput.focus();
+      return false;
+    }
 
-  if (messageInput.value.trim() === '') {
-    alert('Please enter your message.');
-    messageInput.focus();
-    return false;
+    return true; // Form is valid
   }
 
-  return true; // Form is valid
-}
+  // Send form data
+  function sendForm() {
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
 
-// Send form data
-function sendForm() {
-  const nameInput = document.getElementById('name');
-  const emailInput = document.getElementById('email');
-  const messageInput = document.getElementById('message');
+    // Create a new FormData object and append the form data
+    const formData = new FormData();
+    formData.append('name', nameInput.value);
+    formData.append('email', emailInput.value);
+    formData.append('message', messageInput.value);
 
-  // Create a new FormData object and append the form data
-  const formData = new FormData();
-  formData.append('name', nameInput.value);
-  formData.append('email', emailInput.value);
-  formData.append('message', messageInput.value);
-
-  // Send a POST request to contact.php
-  fetch('contact.php', {
-    method: 'POST',
-    body: formData
-  })
-    .then(response => {
-      if (response.ok) {
-        return response.text();
-      }
-      throw new Error('Network response was not ok.');
+    // Send a POST request to contact.php
+    fetch('contact.php', {
+      method: 'POST',
+      body: formData
     })
-    .then(result => {
-      if (result === 'success') {
-        alert('Message sent successfully!');
-        form.reset();
-      } else {
-        alert('An error occurred. Please try again.');
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('Unknown error occurred. Please try again.');
-    });
-}
-
+      .then(response => {
+        if (response.ok) {
+          return response.text();
+        }
+        throw new Error('Network response was not ok.');
+      })
+      .then(result => {
+        if (result === 'success') {
+          alert('Message sent successfully!');
+          form.reset();
+        } else {
+          alert('An error occurred. Please try again.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Unknown error occurred. Please try again.');
+      });
+  }
+});
