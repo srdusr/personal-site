@@ -2,7 +2,7 @@
 $to = 'trevorgray@srdusr.com';
 $subject = 'Test Email';
 $message = 'This is a test email';
-$headers = 'From: sender@example.com';
+$headers = 'From: mailsec.protonmail.ch';
 
 // Send email
 if (mail($to, $subject, $message, $headers)) {
