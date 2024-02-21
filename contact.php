@@ -1,17 +1,12 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 // Include the Composer autoload file
 require_once __DIR__ . '/vendor/autoload.php';
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-use Dotenv\Dotenv;
-
-// Load environment variables from .env
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
 // Check if the form is submitted
-if (isset($_POST['name'])) {
+if (isset($_POST['name']) && isset($_POST['mail']) && isset($_POST['message'])) {
     // Retrieve form data
     $name = $_POST['name'];
     $mailFrom = $_POST['mail'];
@@ -24,10 +19,7 @@ if (isset($_POST['name'])) {
         // Server settings
         $mail->isSMTP(); // Set mailer to use SMTP
         $mail->Host = '127.0.0.1'; // Specify main and backup SMTP servers
-        $mail->SMTPAuth = true; // Enable SMTP authentication
-        $mail->Username = $_ENV['SMTP_USERNAME']; // Use SMTP username from environment variable
-        $mail->Password = $_ENV['SMTP_PASSWORD']; // Use SMTP password from environment variable
-        $mail->SMTPSecure = 'ssl'; // Enable TLS encryption, `ssl` also accepted
+        $mail->SMTPAuth = false; // Disable SMTP authentication
         $mail->Port = 1025; // TCP port to connect to
 
         // Recipients
