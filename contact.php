@@ -27,7 +27,7 @@ if (isset($_POST['name'])) {
         $mail->SMTPAuth = true; // Enable SMTP authentication
         $mail->Username = $_ENV['SMTP_USERNAME']; // Use SMTP username from environment variable
         $mail->Password = $_ENV['SMTP_PASSWORD']; // Use SMTP password from environment variable
-        $mail->SMTPSecure = 'tls'; // Enable TLS encryption, `ssl` also accepted
+        $mail->SMTPSecure = 'ssl'; // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 1025; // TCP port to connect to
 
         // Recipients
