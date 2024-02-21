@@ -11,7 +11,7 @@ $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 // Check if the form is submitted
-if (isset($_POST['submit'])) {
+if (isset($_POST['name'])) {
     // Retrieve form data
     $name = $_POST['name'];
     $mailFrom = $_POST['mail'];
