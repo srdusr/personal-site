@@ -1,34 +1,29 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Collect form data
-    $name = trim($_POST["name"]);
-    $email = trim($_POST["email"]);
-    $message = trim($_POST["message"]);
+    // Retrieve form data
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
 
-    // Sender and recipient
-    $sender = "example@email.com";
-    $recipient = "trevorgray@srdusr.com";
-
-    // Email subject and body
-    $subject = "New Contact Form Submission from $name";
-    $email_body = "Name: $name\n";
-    $email_body .= "Email: $email\n";
-    $email_body .= "Message:\n$message\n";
-
-    // Headers
+    // Email information
+    $to = "trevorgray@srdusr.com"; // Change this to your email address
+    $subject = "New Contact Form Submission";
     $headers = "From: $name <$email>";
 
-    // Attempt to send email
-    if (mail($recipient, $subject, $email_body, $headers)) {
-        // Email sent successfully
-        echo json_encode(array("status" => "success", "message" => "Email sent successfully!"));
+    // Compose the email content
+    $email_content = "You have received a new message from your website contact form.\n\n";
+    $email_content .= "Name: $name\n";
+    $email_content .= "Email: $email\n\n";
+    $email_content .= "Message:\n$message\n";
+
+    // Send email
+    if (mail($to, $subject, $email_content, $headers)) {
+        echo "success"; // Send a success response back to JavaScript
     } else {
-        // Error sending email
-        echo json_encode(array("status" => "error", "message" => "An error occurred. Please try again later."));
+        echo "error"; // Send an error response back to JavaScript
     }
 } else {
-    // Not a POST request, redirect to contact page
-    header("Location: contact.html");
-    exit();
+    // Not a POST request, so do nothing (or handle the error as needed)
+    http_response_code(405); // Method Not Allowed
 }
 ?>
