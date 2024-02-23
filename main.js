@@ -1,3 +1,14 @@
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+
 // Responsive hamburger menu
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector("nav ul");
@@ -166,84 +177,169 @@ document.getElementById("category").addEventListener("change", filterPosts);
 
 // Contact form
 
-// Pressing contact button goes a little above the contact section
+// PHPMailer:
+// Wait for the DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", function() {
-  const form = document.getElementById('contact-form');
-  form.addEventListener('submit', handleSubmit);
+  const contactForm = document.getElementById("contact-form");
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const messageInput = document.getElementById("message");
+  const errorMessage = document.getElementById("error-message");
 
-  // Handle form submission
-  function handleSubmit(event) {
-    event.preventDefault(); // Prevent the form from submitting
-
-    // Validate the form
+  contactForm.addEventListener("submit", function(event) {
+    event.preventDefault();
     if (validateForm()) {
-      // If the form is valid, send the data
-      sendForm();
+      // If form is valid, send the data via AJAX
+      const formData = new FormData(contactForm);
+      sendData(formData);
     }
-  }
+  });
 
-  // Validate the form
   function validateForm() {
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const messageInput = document.getElementById('message');
+    let isValid = true;
 
-    // Validation
-    if (nameInput.value.trim() === '') {
-      alert('Please enter your name.');
-      nameInput.focus();
-      return false;
+    if (nameInput.value.trim() === "") {
+      isValid = false;
+      setError("Name is required");
     }
 
-    if (emailInput.value.trim() === '') {
-      alert('Please enter your email.');
-      emailInput.focus();
-      return false;
+    if (emailInput.value.trim() === "") {
+      isValid = false;
+      setError("Email is required");
+    } else if (!isEmailValid(emailInput.value.trim())) {
+      isValid = false;
+      setError("Invalid email format");
     }
 
-    if (messageInput.value.trim() === '') {
-      alert('Please enter your message.');
-      messageInput.focus();
-      return false;
+    if (messageInput.value.trim() === "") {
+      isValid = false;
+      setError("Message is required");
     }
 
-    return true; // Form is valid
+    return isValid;
   }
 
-  // Send form data
-  function sendForm() {
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const messageInput = document.getElementById('message');
+  function isEmailValid(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
 
-    // Create a new FormData object and append the form data
-    const formData = new FormData();
-    formData.append('name', nameInput.value);
-    formData.append('email', emailInput.value);
-    formData.append('message', messageInput.value);
+  function setError(message) {
+    errorMessage.innerText = message;
+    errorMessage.classList.add("error");
+  }
 
-    // Send a POST request to contact.php
-    fetch('contact.php', {
-      method: 'POST',
+  function clearError() {
+    errorMessage.innerText = "";
+    errorMessage.classList.remove("error");
+  }
+
+  function sendData(formData) {
+    fetch(contactForm.getAttribute("action"), {
+      method: "POST",
       body: formData
     })
       .then(response => {
-        if (response.ok) {
-          return response.text();
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
         }
-        throw new Error('Network response was not ok.');
+        return response.json(); // Parse JSON response
       })
-      .then(result => {
-        if (result === 'success') {
-          alert('Message sent successfully!');
-          form.reset();
-        } else {
-          alert('An error occurred. Please try again.');
-        }
+      .then(data => {
+        // Handle success message or any other logic after successful submission
+        console.log(data.message);
+        contactForm.reset(); // Reset form after successful submission
+        alert(data.message); // Show success message to user
       })
       .catch(error => {
-        console.error('Error:', error);
-        alert('Unknown error occurred. Please try again.');
+        // Handle error
+        console.error("Error:", error.message);
+        alert("An error occurred, please try again later.");
       });
   }
 });
+
+
+
+//  mail()
+//  Wait for the DOM to be fully loaded
+// document.addEventListener("DOMContentLoaded", function() {
+//     const contactForm = document.getElementById("contact-form");
+//     const nameInput = document.getElementById("name");
+//     const emailInput = document.getElementById("email");
+//     const messageInput = document.getElementById("message");
+//     const errorMessage = document.getElementById("error-message");
+//
+//     contactForm.addEventListener("submit", function(event) {
+//         event.preventDefault();
+//         if (validateForm()) {
+//             // If form is valid, send the data via AJAX
+//             const formData = new FormData(contactForm);
+//             sendData(formData);
+//         }
+//     });
+//
+//     function validateForm() {
+//         let isValid = true;
+//
+//         if (nameInput.value.trim() === "") {
+//             isValid = false;
+//             setError("Name is required");
+//         }
+//
+//         if (emailInput.value.trim() === "") {
+//             isValid = false;
+//             setError("Email is required");
+//         } else if (!isEmailValid(emailInput.value.trim())) {
+//             isValid = false;
+//             setError("Invalid email format");
+//         }
+//
+//         if (messageInput.value.trim() === "") {
+//             isValid = false;
+//             setError("Message is required");
+//         }
+//
+//         return isValid;
+//     }
+//
+//     function isEmailValid(email) {
+//         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//         return re.test(email);
+//     }
+//
+//     function setError(message) {
+//         errorMessage.innerText = message;
+//         errorMessage.classList.add("error");
+//     }
+//
+//     function clearError() {
+//         errorMessage.innerText = "";
+//         errorMessage.classList.remove("error");
+//     }
+//
+//     function sendData(formData) {
+//         fetch(contactForm.getAttribute("action"), {
+//             method: "POST",
+//             body: formData
+//         })
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error("Network response was not ok");
+//             }
+//             return response.json(); // Parse JSON response
+//         })
+//         .then(data => {
+//             // Handle success message or any other logic after successful submission
+//             console.log(data.message);
+//             contactForm.reset(); // Reset form after successful submission
+//             alert(data.message); // Show success message to user
+//         })
+//         .catch(error => {
+//             // Handle error
+//             console.error("Error:", error.message);
+//             alert("An error occurred, please try again later.");
+//         });
+//     }
+// });
+
