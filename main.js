@@ -180,51 +180,99 @@ document.getElementById("category").addEventListener("change", filterPosts);
 // PHPMailer:
 // Wait for the DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", function() {
-  const form = document.getElementById("contactForm");
+  const contactForm = document.getElementById("contact-form");
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const messageInput = document.getElementById("message");
+  const errorMessage = document.getElementById("error-message");
 
-  form.addEventListener("submit", function(event) {
+  contactForm.addEventListener("submit", function(event) {
     event.preventDefault();
+    if (validateForm()) {
+      // If form is valid, send the data via AJAX
+      const formData = new FormData(contactForm);
+      sendData(formData);
+    }
+  });
 
-    const formData = new FormData(this);
+  function validateForm() {
+    let isValid = true;
 
-    fetch("contact.php", {
+    if (nameInput.value.trim() === "") {
+      isValid = false;
+      setError("Name is required");
+    }
+
+    if (emailInput.value.trim() === "") {
+      isValid = false;
+      setError("Email is required");
+    } else if (!isEmailValid(emailInput.value.trim())) {
+      isValid = false;
+      setError("Invalid email format");
+    }
+
+    if (messageInput.value.trim() === "") {
+      isValid = false;
+      setError("Message is required");
+    }
+
+    return isValid;
+  }
+
+  function isEmailValid(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+
+  function setError(message) {
+    errorMessage.innerText = message;
+    errorMessage.classList.add("error");
+  }
+
+  function clearError() {
+    errorMessage.innerText = "";
+    errorMessage.classList.remove("error");
+  }
+
+  function sendData(formData) {
+    fetch(contactForm.getAttribute("action"), {
       method: "POST",
       body: formData
     })
-      .then(response => response.json())
-      .then(data => {
-        if (data.status === "success") {
-          // Show success message
-          const successMessage = document.getElementById("successMessage");
-          successMessage.textContent = data.message;
-          successMessage.style.display = "block";
-
-          // Clear form
-          form.reset();
-        } else if (data.status === "error") {
-          // Show error message
-          const errorMessage = document.getElementById("errorMessage");
-          errorMessage.textContent = data.message;
-          errorMessage.style.display = "block";
-
-          // Display specific field errors if available
-          if (data.name_error) {
-            const nameError = document.getElementById("nameError");
-            nameError.textContent = data.name_error;
-            nameError.style.display = "block";
-          }
-          if (data.email_error) {
-            const emailError = document.getElementById("emailError");
-            emailError.textContent = data.email_error;
-            emailError.style.display = "block";
-          }
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
         }
+        return response.text(); // Parse response as text
+      })
+      .then(data => {
+        // Handle success message or any other logic after successful submission
+        clearError(); // Clear any previous error message
+        showMessage(data, 'success'); // Show success message
       })
       .catch(error => {
-        console.error("Error:", error);
+        // Handle error
+        console.error("Error:", error.message);
+        showMessage("An error occurred, please try again later.", 'error'); // Show error message
       });
-  });
+  }
+
+  function showMessage(message, type) {
+    const messageContainer = document.getElementById("message-container");
+    messageContainer.textContent = message;
+
+    if (type === 'success') {
+      messageContainer.classList.remove('error');
+      messageContainer.classList.add('success');
+    } else {
+      messageContainer.classList.remove('success');
+      messageContainer.classList.add('error');
+    }
+
+    messageContainer.style.display = "block";
+  }
 });
+
 
 
 //  mail()
