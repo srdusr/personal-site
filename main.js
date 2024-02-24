@@ -180,85 +180,50 @@ document.getElementById("category").addEventListener("change", filterPosts);
 // PHPMailer:
 // Wait for the DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", function() {
-  const contactForm = document.getElementById("contact-form");
-  const nameInput = document.getElementById("name");
-  const emailInput = document.getElementById("email");
-  const messageInput = document.getElementById("message");
-  const messageContainer = document.getElementById("message-container");
-  const messageDiv = document.getElementById("message");
+  const form = document.getElementById("contactForm");
 
-  contactForm.addEventListener("submit", function(event) {
+  form.addEventListener("submit", function(event) {
     event.preventDefault();
-    if (validateForm()) {
-      const formData = new FormData(contactForm);
-      sendData(formData);
-    }
-  });
 
-  function validateForm() {
-    let isValid = true;
+    const formData = new FormData(this);
 
-    if (nameInput.value.trim() === "") {
-      isValid = false;
-      setError("Name is required");
-    }
-
-    if (emailInput.value.trim() === "") {
-      isValid = false;
-      setError("Email is required");
-    } else if (!isEmailValid(emailInput.value.trim())) {
-      isValid = false;
-      setError("Invalid email format");
-    }
-
-    if (messageInput.value.trim() === "") {
-      isValid = false;
-      setError("Message is required");
-    }
-
-    return isValid;
-  }
-
-  function isEmailValid(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-  }
-
-  function setError(message) {
-    messageDiv.innerText = message;
-    messageContainer.style.display = "block";
-  }
-
-  function clearError() {
-    messageDiv.innerText = "";
-    messageContainer.style.display = "none";
-  }
-
-  function sendData(formData) {
-    fetch(contactForm.getAttribute("action"), {
+    fetch("contact.php", {
       method: "POST",
       body: formData
     })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
+      .then(response => response.json())
       .then(data => {
-        console.log(data.message);
-        clearError();
-        messageDiv.innerText = data.message;
-        messageContainer.style.display = "block";
-        contactForm.reset();
+        if (data.status === "success") {
+          // Show success message
+          const successMessage = document.getElementById("successMessage");
+          successMessage.textContent = data.message;
+          successMessage.style.display = "block";
+
+          // Clear form
+          form.reset();
+        } else if (data.status === "error") {
+          // Show error message
+          const errorMessage = document.getElementById("errorMessage");
+          errorMessage.textContent = data.message;
+          errorMessage.style.display = "block";
+
+          // Display specific field errors if available
+          if (data.name_error) {
+            const nameError = document.getElementById("nameError");
+            nameError.textContent = data.name_error;
+            nameError.style.display = "block";
+          }
+          if (data.email_error) {
+            const emailError = document.getElementById("emailError");
+            emailError.textContent = data.email_error;
+            emailError.style.display = "block";
+          }
+        }
       })
       .catch(error => {
-        console.error("Error:", error.message);
-        clearError();
-        messageDiv.innerText = "An error occurred, please try again later.";
-        messageContainer.style.display = "block";
+        console.error("Error:", error);
       });
-  }
+  });
 });
 
 
