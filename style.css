@@ -493,14 +493,23 @@ header p {
     background-color: #3e8e41;
 }
 
-#success-message {
-    background-color: #dff0d8;
-    color: #3c763d;
-    border: 1px solid #d6e9c6;
-    padding: 15px;
-    margin-bottom: 20px;
+
+#message-container {
     display: none;
-    /* Initially hidden */
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
 }
 
 /* Footer styling */
