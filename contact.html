@@ -41,7 +41,7 @@
             <div class="content">
                 <h2>Contact Me</h2>
                 <p>If you'd like to get in touch, please fill out the form below:</p>
-                <form id="contact-form" action="contact.php" method="POST">
+                <form id="contact-form" action="" method="POST">
                     <div class="input-row">
                         <div class="input-group">
                             <input type="text" id="name" name="name" placeholder="Name" required />
@@ -61,8 +61,9 @@
                         </button>
                     </div>
                 </form>
-                <div id="successMessage" style="color: green; display: none;"></div>
-                <div id="errorMessage" style="color: red; display: none;"></div>
+                <div id="message-container" class="message-container" style="display: none">
+                    <div id="message" class="message"></div>
+                </div>
             </div>
         </section>
     </div>
