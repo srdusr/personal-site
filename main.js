@@ -184,12 +184,12 @@ document.addEventListener("DOMContentLoaded", function() {
   const nameInput = document.getElementById("name");
   const emailInput = document.getElementById("email");
   const messageInput = document.getElementById("message");
-  const errorMessage = document.getElementById("error-message");
+  const messageContainer = document.getElementById("message-container");
+  const messageDiv = document.getElementById("message");
 
   contactForm.addEventListener("submit", function(event) {
     event.preventDefault();
     if (validateForm()) {
-      // If form is valid, send the data via AJAX
       const formData = new FormData(contactForm);
       sendData(formData);
     }
@@ -225,23 +225,16 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function setError(message) {
-    errorMessage.innerText = message;
-    errorMessage.classList.add("error");
+    messageDiv.innerText = message;
+    messageContainer.style.display = "block";
   }
 
   function clearError() {
-    errorMessage.innerText = "";
-    errorMessage.classList.remove("error");
+    messageDiv.innerText = "";
+    messageContainer.style.display = "none";
   }
 
   function sendData(formData) {
-    const messageContainer = document.getElementById("message-container");
-    const message = document.getElementById("message");
-
-    message.textContent = "Sending message..."; // Display sending message
-    messageContainer.classList.remove("success", "error");
-    messageContainer.style.display = "block";
-
     fetch(contactForm.getAttribute("action"), {
       method: "POST",
       body: formData
@@ -250,22 +243,23 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        return response.text(); // Parse response as text
+        return response.json();
       })
       .then(data => {
-        // Handle success message or any other logic after successful submission
-        message.textContent = data; // Update message with server response
-        messageContainer.classList.add("success");
+        console.log(data.message);
+        clearError();
+        messageDiv.innerText = data.message;
+        messageContainer.style.display = "block";
+        contactForm.reset();
       })
       .catch(error => {
-        // Handle error
         console.error("Error:", error.message);
-        message.textContent = "An error occurred. Please try again later.";
-        messageContainer.classList.add("error");
+        clearError();
+        messageDiv.innerText = "An error occurred, please try again later.";
+        messageContainer.style.display = "block";
       });
   }
 });
-
 
 
 //  mail()
