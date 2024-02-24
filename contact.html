@@ -5,76 +5,75 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light only" />
-    <meta name="darkreader-lock">
+    <meta name="darkreader-lock" />
     <link rel="icon" href=".face" type="image/png" />
     <title>srdusr</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 
-
 <?php include 'contact.php'; ?>
 
-<nav>
-    <div class="logo">
-        <h1>
-            <a href="/" class="logo">
-                <img src=".face" alt="" />
-                <span class="logo-text">srdusr</span>
-            </a>
-        </h1>
-    </div>
-    <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <ul>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-</nav>
-<div class="content-wrapper">
-    <section class="contact" id="contact">
-        <div class="content">
-            <h2>Contact Me</h2>
-            <p>If you'd like to get in touch, please fill out the form below:</p>
-            <form id="contact-form" action="contact.php" method="POST">
-                <div class="input-row">
-                    <div class="input-group">
-                        <input type="text" id="name" name="name" placeholder="Name" required />
-                    </div>
-                </div>
-                <div class="input-row">
-                    <div class="input-group">
-                        <input type="email" id="email" name="email" placeholder="Email" required />
-                    </div>
-                </div>
-                <div class="input-row">
-                    <textarea id="message" name="message" placeholder="Message" required></textarea>
-                </div>
-                <div class="input-row">
-                    <button type="submit" class="send-button">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>
-                </div>
-            </form>
-            <div id="message-container" class="message-container" style="display: none">
-                <div id="message" class="message"></div>
-            </div>
-
+<body>
+    <nav>
+        <div class="logo">
+            <h1>
+                <a href="/" class="logo">
+                    <img src=".face" alt="" />
+                    <span class="logo-text">srdusr</span>
+                </a>
+            </h1>
         </div>
-    </section>
-</div>
-<footer>
-    <div class="content">
-        <span class="left-text">&copy; 2024 srdusr</span>
-        <span class="symbol">|</span>
-        <span class="right-text">Trevor Gray</span>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="content-wrapper">
+        <section class="contact" id="contact">
+            <div class="content">
+                <h2>Contact Me</h2>
+                <p>If you'd like to get in touch, please fill out the form below:</p>
+                <form id="contact-form" action="contact.php" method="POST">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <input type="text" id="name" name="name" placeholder="Name" required />
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <input type="email" id="email" name="email" placeholder="Email" required />
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <textarea id="message" name="message" placeholder="Message" required></textarea>
+                    </div>
+                    <div class="input-row">
+                        <button type="submit" class="send-button">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </div>
+                </form>
+                <div id="message-container" class="message-container" style="display: none">
+                    <div id="message" class="message"></div>
+                </div>
+            </div>
+        </section>
     </div>
-</footer>
-<script src="main.js"></script>
+    <footer>
+        <div class="content">
+            <span class="left-text">&copy; 2024 srdusr</span>
+            <span class="symbol">|</span>
+            <span class="right-text">Trevor Gray</span>
+        </div>
+    </footer>
+    <script src="main.js"></script>
 </body>
 
 </html>
