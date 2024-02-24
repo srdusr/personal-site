@@ -41,24 +41,25 @@
             <h2>Contact Me</h2>
             <p>If you'd like to get in touch, please fill out the form below:</p>
             <form id="contact-form" action="contact.php" method="POST">
-                <div class="input-row">
-                    <div class="input-group">
-                        <input type="text" id="name" name="name" placeholder="Name" required />
+                <div id="message-container" style="display: none;">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <input type="text" id="name" name="name" placeholder="Name" required />
+                        </div>
                     </div>
-                </div>
-                <div class="input-row">
-                    <div class="input-group">
-                        <input type="email" id="email" name="email" placeholder="Email" required />
+                    <div class="input-row">
+                        <div class="input-group">
+                            <input type="email" id="email" name="email" placeholder="Email" required />
+                        </div>
                     </div>
-                </div>
-                <div class="input-row">
-                    <textarea id="message" name="message" placeholder="Message" required></textarea>
-                </div>
-                <div class="input-row">
-                    <button type="submit" class="send-button">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>
-                </div>
+                    <div class="input-row">
+                        <textarea id="message" name="message" placeholder="Message" required></textarea>
+                    </div>
+                    <div class="input-row">
+                        <button type="submit" class="send-button">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </div>
             </form>
         </div>
     </section>
