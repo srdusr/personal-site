@@ -75,29 +75,32 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST" ||
             $mail->Body = "Name: " . $name . "\n" . "Email: " . $email . "\n" . "Message: " . $message;
             $mail->send();
 
-            // Send JSON response on success
+            // Send JSON response for success
             http_response_code(200);
-            echo json_encode(array("message" => "Email sent successfully."));
+            echo json_encode(array("status" => "success", "message" => "Email sent successfully."));
             exit;
         } catch (Exception $e) {
-            // Send JSON response on error
+            // Send JSON response for error
             http_response_code(500);
-            echo json_encode(array("message" => "An error occurred. Email not sent. Error: " . $mail->ErrorInfo));
+            echo json_encode(array("status" => "error", "message" => "An error occurred. Email not sent. Error: " . $mail->ErrorInfo));
             exit;
         }
     } else {
+        // Send JSON response for validation errors
         http_response_code(400);
-        echo json_encode(array("message" => "Error: Please check the form for errors."));
+        echo json_encode(array("status" => "error", "message" => "Error: Please check the form for errors.", "name_error" => $name_error, "email_error" => $email_error));
         exit;
     }
 } else {
+    // Send JSON response for invalid request method
     http_response_code(405);
-    echo json_encode(array("message" => "This script is intended to be used with POST requests or command line arguments."));
+    echo json_encode(array("status" => "error", "message" => "This script is intended to be used with POST requests."));
     exit;
 }
 
 // Function to sanitize input data
-function test_input($data) {
+function test_input($data)
+{
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
