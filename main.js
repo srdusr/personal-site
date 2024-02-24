@@ -235,6 +235,13 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function sendData(formData) {
+    const messageContainer = document.getElementById("message-container");
+    const message = document.getElementById("message");
+
+    message.textContent = "Sending message..."; // Display sending message
+    messageContainer.classList.remove("success", "error");
+    messageContainer.style.display = "block";
+
     fetch(contactForm.getAttribute("action"), {
       method: "POST",
       body: formData
@@ -247,29 +254,15 @@ document.addEventListener("DOMContentLoaded", function() {
       })
       .then(data => {
         // Handle success message or any other logic after successful submission
-        clearError(); // Clear any previous error message
-        showMessage(data, 'success'); // Show success message
+        message.textContent = data; // Update message with server response
+        messageContainer.classList.add("success");
       })
       .catch(error => {
         // Handle error
         console.error("Error:", error.message);
-        showMessage("An error occurred, please try again later.", 'error'); // Show error message
+        message.textContent = "An error occurred. Please try again later.";
+        messageContainer.classList.add("error");
       });
-  }
-
-  function showMessage(message, type) {
-    const messageContainer = document.getElementById("message-container");
-    messageContainer.textContent = message;
-
-    if (type === 'success') {
-      messageContainer.classList.remove('error');
-      messageContainer.classList.add('success');
-    } else {
-      messageContainer.classList.remove('success');
-      messageContainer.classList.add('error');
-    }
-
-    messageContainer.style.display = "block";
   }
 });
 
