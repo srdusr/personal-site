@@ -243,19 +243,33 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        return response.json(); // Parse JSON response
+        return response.text(); // Parse response as text
       })
       .then(data => {
         // Handle success message or any other logic after successful submission
-        console.log(data.message);
-        contactForm.reset(); // Reset form after successful submission
-        alert(data.message); // Show success message to user
+        clearError(); // Clear any previous error message
+        showMessage(data, 'success'); // Show success message
       })
       .catch(error => {
         // Handle error
         console.error("Error:", error.message);
-        alert("An error occurred, please try again later.");
+        showMessage("An error occurred, please try again later.", 'error'); // Show error message
       });
+  }
+
+  function showMessage(message, type) {
+    const messageContainer = document.getElementById("message-container");
+    messageContainer.textContent = message;
+
+    if (type === 'success') {
+      messageContainer.classList.remove('error');
+      messageContainer.classList.add('success');
+    } else {
+      messageContainer.classList.remove('success');
+      messageContainer.classList.add('error');
+    }
+
+    messageContainer.style.display = "block";
   }
 });
 
