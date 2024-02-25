@@ -16,6 +16,7 @@ $dotenv->load();
 $recipient = $_ENV['RECIPIENT_EMAIL'];
 $subject = 'Contact Form Submission';
 $sender = $_ENV['SENDER_EMAIL'];
+$recaptcha_secret = $_ENV['RECAPTCHA_SECRET_KEY'];
 
 $mail = new PHPMailer(true);
 
@@ -54,8 +55,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST" ||
     }
 
     // Verify reCAPTCHA
-    $recaptcha_secret = $_ENV['RECAPTCHA_SECRET_KEY'];
-    $recaptcha_response = $_POST['g-recaptcha-response'];
+    $recaptcha_response = $_POST['token'];
     $recaptcha = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$recaptcha_secret&response=$recaptcha_response");
     $recaptcha = json_decode($recaptcha);
 
@@ -118,3 +118,4 @@ function test_input($data) {
 }
 
 ?>
+
