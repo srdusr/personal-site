@@ -16,7 +16,6 @@ $dotenv->load();
 $recipient = $_ENV['RECIPIENT_EMAIL'];
 $subject = 'Contact Form Submission';
 $sender = $_ENV['SENDER_EMAIL'];
-$recaptcha_secret = $_ENV['RECAPTCHA_SECRET_KEY'];
 
 $mail = new PHPMailer(true);
 
@@ -55,12 +54,27 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST" ||
     }
 
     // Verify reCAPTCHA
-    $recaptcha_response = $_POST['token'];
-    $recaptcha = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$recaptcha_secret&response=$recaptcha_response");
-    $recaptcha = json_decode($recaptcha);
+    $recaptcha_token = $_POST['g-recaptcha-response'];
+    if (empty($recaptcha_token)) {
+        http_response_code(400);
+        echo json_encode(array("message" => "reCAPTCHA verification failed."));
+        exit;
+    }
 
-    // If reCAPTCHA verification fails
-    if (!$recaptcha->success) {
+    // Verify reCAPTCHA token
+    function verifyRecaptcha($token, $secret) {
+        $client = new GuzzleHttp\Client();
+        $response = $client->post('https://www.google.com/recaptcha/api/siteverify', [
+            'form_params' => [
+                'secret'   => $secret,
+                'response' => $token
+            ]
+        ]);
+        $body = json_decode((string) $response->getBody());
+        return $body->success;
+    }
+
+    if (!verifyRecaptcha($recaptcha_token, $_ENV['RECAPTCHA_SECRET_KEY'])) {
         http_response_code(400);
         echo json_encode(array("message" => "reCAPTCHA verification failed."));
         exit;
