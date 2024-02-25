@@ -10,6 +10,7 @@
     <title>srdusr</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdBUn8pAAAAAOajM-9cJhKARuMh57M_GVxiYg0l"></script>
 </head>
 
 <body>
@@ -58,6 +59,8 @@
                             <i class="fas fa-paper-plane"></i> Send Message
                         </button>
                     </div>
+                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+
                 </form>
             </div>
         </section>
@@ -70,41 +73,47 @@
         </div>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const contactForm = document.getElementById('contact-form');
-            const nameInput = document.getElementById('name');
-            const emailInput = document.getElementById('email');
-            const messageInput = document.getElementById('message');
-            const errorMessage = document.getElementById('error-message');
 
-            contactForm.addEventListener('submit', function (event) {
+        document.addEventListener("DOMContentLoaded", function () {
+            const contactForm = document.getElementById("contact-form");
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            const messageInput = document.getElementById("message");
+            const errorMessage = document.getElementById("error-message");
+
+            contactForm.addEventListener("submit", function (event) {
                 event.preventDefault();
                 if (validateForm()) {
-                    // If form is valid, send the data via AJAX
-                    const formData = new FormData(contactForm);
-                    sendData(formData);
+                    // If form is valid, generate reCAPTCHA token and send the data via AJAX
+                    grecaptcha.ready(function () {
+                        grecaptcha.execute('6LdBUn8pAAAAAOajM-9cJhKARuMh57M_GVxiYg0l', {action: 'submit'}).then(function (token) {
+                            const formData = new FormData(contactForm);
+                            formData.append('g-recaptcha-response', token);
+                            sendData(formData);
+                        });
+                    });
                 }
             });
 
             function validateForm() {
                 let isValid = true;
 
-                if (nameInput.value.trim() === '') {
+                if (nameInput.value.trim() === "") {
                     isValid = false;
-                    setError('Name is required');
+                    setError("Name is required");
                 }
 
-                if (emailInput.value.trim() === '') {
+                if (emailInput.value.trim() === "") {
                     isValid = false;
-                    setError('Email is required');
+                    setError("Email is required");
                 } else if (!isEmailValid(emailInput.value.trim())) {
                     isValid = false;
-                    setError('Invalid email format');
+                    setError("Invalid email format");
                 }
 
-                if (messageInput.value.trim() === '') {
+                if (messageInput.value.trim() === "") {
                     isValid = false;
-                    setError('Message is required');
+                    setError("Message is required");
                 }
 
                 return isValid;
@@ -117,22 +126,22 @@
 
             function setError(message) {
                 errorMessage.innerText = message;
-                errorMessage.classList.add('error');
+                errorMessage.classList.add("error");
             }
 
             function clearError() {
-                errorMessage.innerText = '';
-                errorMessage.classList.remove('error');
+                errorMessage.innerText = "";
+                errorMessage.classList.remove("error");
             }
 
             function sendData(formData) {
-                fetch(contactForm.getAttribute('action'), {
-                    method: 'POST',
-                    body: formData,
+                fetch(contactForm.getAttribute("action"), {
+                    method: "POST",
+                    body: formData
                 })
                     .then(response => {
                         if (!response.ok) {
-                            throw new Error('Network response was not ok');
+                            throw new Error("Network response was not ok");
                         }
                         return response.json(); // Parse JSON response
                     })
@@ -144,14 +153,13 @@
                     })
                     .catch(error => {
                         // Handle error
-                        console.error('Error:', error.message);
-                        alert('An error occurred, please try again later.');
+                        console.error("Error:", error.message);
+                        alert("An error occurred, please try again later.");
                     });
             }
         });
     </script>
     <script src="main.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LdBUn8pAAAAAOajM-9cJhKARuMh57M_GVxiYg0l"></script>
 </body>
 
 </html>
