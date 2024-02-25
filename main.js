@@ -179,6 +179,7 @@ document.getElementById("category").addEventListener("change", filterPosts);
 
 // PHPMailer:
 // Wait for the DOM to be fully loaded
+// Contact form with reCAPTCHA v3
 document.addEventListener("DOMContentLoaded", function() {
   const contactForm = document.getElementById("contact-form");
   const nameInput = document.getElementById("name");
@@ -188,11 +189,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
   contactForm.addEventListener("submit", function(event) {
     event.preventDefault();
-    grecaptcha.ready(function() {
-      grecaptcha.execute('6LdBUn8pAAAAAOajM-9cJhKARuMh57M_GVxiYg0l', { action: 'submit' }).then(function(token) {
-        sendData(token);
+    if (validateForm()) {
+      // If form is valid, generate reCAPTCHA token and send the data via AJAX
+      grecaptcha.ready(function() {
+        grecaptcha.execute('6LdBUn8pAAAAAOajM-9cJhKARuMh57M_GVxiYg0l', { action: 'submit' }).then(function(token) {
+          const formData = new FormData(contactForm);
+          formData.append('g-recaptcha-response', token);
+          sendData(formData);
+        });
       });
-    });
+    }
   });
 
   function validateForm() {
@@ -234,13 +240,7 @@ document.addEventListener("DOMContentLoaded", function() {
     errorMessage.classList.remove("error");
   }
 
-  function sendData(token) {
-    const formData = new FormData();
-    formData.append("name", nameInput.value.trim());
-    formData.append("email", emailInput.value.trim());
-    formData.append("message", messageInput.value.trim());
-    formData.append("token", token);
-
+  function sendData(formData) {
     fetch(contactForm.getAttribute("action"), {
       method: "POST",
       body: formData
