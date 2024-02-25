@@ -188,11 +188,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
   contactForm.addEventListener("submit", function(event) {
     event.preventDefault();
-    if (validateForm()) {
-      // If form is valid, send the data via AJAX
-      const formData = new FormData(contactForm);
-      sendData(formData);
-    }
+    grecaptcha.ready(function() {
+      grecaptcha.execute('6LdBUn8pAAAAAOajM-9cJhKARuMh57M_GVxiYg0l', { action: 'submit' }).then(function(token) {
+        sendData(token);
+      });
+    });
   });
 
   function validateForm() {
@@ -234,7 +234,13 @@ document.addEventListener("DOMContentLoaded", function() {
     errorMessage.classList.remove("error");
   }
 
-  function sendData(formData) {
+  function sendData(token) {
+    const formData = new FormData();
+    formData.append("name", nameInput.value.trim());
+    formData.append("email", emailInput.value.trim());
+    formData.append("message", messageInput.value.trim());
+    formData.append("token", token);
+
     fetch(contactForm.getAttribute("action"), {
       method: "POST",
       body: formData
