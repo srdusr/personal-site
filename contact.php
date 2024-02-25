@@ -53,6 +53,19 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST" ||
         }
     }
 
+    // Verify reCAPTCHA
+    $recaptcha_secret = $_ENV['RECAPTCHA_SECRET_KEY'];
+    $recaptcha_response = $_POST['g-recaptcha-response'];
+    $recaptcha = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$recaptcha_secret&response=$recaptcha_response");
+    $recaptcha = json_decode($recaptcha);
+
+    // If reCAPTCHA verification fails
+    if (!$recaptcha->success) {
+        http_response_code(400);
+        echo json_encode(array("message" => "reCAPTCHA verification failed."));
+        exit;
+    }
+
     // Send email if no errors
     if (empty($email_error) && empty($name_error)) {
         try {
@@ -103,6 +116,5 @@ function test_input($data) {
     $data = htmlspecialchars($data);
     return $data;
 }
-
 
 ?>
